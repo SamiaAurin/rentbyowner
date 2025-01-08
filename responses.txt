@@ -1,0 +1,211 @@
+{
+    "GeoInfo": {
+        "Breadcrumbs": [
+            {
+                
+            },
+            {
+                
+            },
+            {
+                "
+            }
+        ],
+        "Center": {
+            
+        },
+        "City": "Dhaka",
+        "Country": "Bangladesh",
+        "CountryCode": "BD",
+        "Display": [
+            "bangladesh",
+            "dhaka-division",
+            "dhaka",
+            "973"
+        ],
+        "GooglePlaceId": "ChIJgWsCh7C4VTcRwgRZ3btjpY8",
+        "LocationID": "973",
+        "IsPoi": false,
+        "Lat": "23.780653",
+        "Lng": "90.41366",
+        "LocationSlug": "bangladesh/dhaka-division/dhaka/973",
+        "LocationType": "city",
+        "PropertyCount": 400,
+        "ShortName": "Dhaka",
+        "Name": "Dhaka, Dhaka, Dhaka Division, Bangladesh",
+        "State": "Dhaka Division",
+        "PropertyCountByDistances": {
+            
+        },
+        "
+        "SlugList": {
+            "en": "bangladesh/dhaka-division/dhaka/973",
+            "es": "bangladesh/dhaka-division/dhaka/973"
+        }
+    },
+    "Result": {
+        "Count": 569,
+        "ItemIDs": [
+            "HA-61111684228",
+            "BC-1178288",
+            "HA-61111679939",
+            "BC-1222735",
+            "HA-611485278",
+            "BC-1794582",
+            "HA-3211261378",
+            "BC-1035607",
+            "HA-1217121620",
+            "BC-2794035",
+            "HA-7311753046",
+            "BC-5287945",
+            "HA-3211485768",
+            "BC-2764858",
+            "HA-3211468707",
+            "BC-6664048",
+            "HA-3211486676",
+            "BC-1423907",
+            "HA-1217538101",
+            "BC-4197152",
+            "HA-3211644585",
+            "BC-5245477",
+            "HA-1219069779",
+            "BC-1565336",
+            "HA-3211140921",
+            "BC-6126806",
+            "HA-61111424213",
+            "BC-6360214",
+            "HA-1217823150",
+            "BC-8862577",
+            "HA-1219257507",
+            "BC-8862525",
+            "HA-1219058238",
+            "BC-8844218",
+            "HA-1487937067",
+            "BC-8839072",
+            "HA-1217918549",
+            "BC-8730777",
+            "HA-61111672780",
+            "BC-8539109",
+            "HA-3213429296",
+            "BC-8357927",
+            "HA-1219156545",
+            "BC-8142741",
+            "HA-3214046515",
+            "BC-7788661",
+            "HA-3213588519",
+            "BC-6927241",
+            "BC-12500688",
+            "BC-9500785",
+            "BC-5225858",
+            "BC-11412980",
+            "BC-12983732",
+            "BC-11971927",
+            "BC-8965751",
+            "BC-2378643",
+            "BC-1200759",
+            "BC-8395696",
+            "BC-6077564",
+            "BC-4303256",
+            "BC-735371",
+            "BC-4535726",
+            "BC-2310704",
+            "BC-1135116"
+        ],
+        "AverageRating": 9.41
+    },
+    "Sts": {
+        "StsRoute": "ROW->Default->default->desktop",
+        "AllFeedRatio": {
+            "11": 40,
+            "12": 50,
+            "22": 10
+        }
+    },
+    "IsRealTimeAvailabilityFound": false,
+    "Success": true,
+    "ShowFallbackData": false
+}
+
+-----------------------------------------
+=========================================
+-----------------------------------------
+{
+    "Count": 24,
+    "Items": [
+        {
+            {
+            "ID": "HA-61111684228",
+            "Feed": 12,
+            "Published": true,
+            "GeoInfo": {
+                "Categories": [
+                    {
+                        "Name": "Bangladesh",
+                        "Slug": "bangladesh",
+                        "Type": "country",
+                        "Display": [
+                            "bangladesh"
+                        ]
+                    },
+                    {
+                        "Name": "Dhaka Division",
+                        "Slug": "bangladesh/dhaka-division",
+                        "Type": "state",
+                        "Display": [
+                            "bangladesh",
+                            "dhaka-division"
+                        ]
+                    },
+                    {
+                        "Name": "Dhaka",
+                        "Slug": "bangladesh/dhaka-division/dhaka/973",
+                        "Type": "city",
+                        "Display": [
+                            "bangladesh",
+                            "dhaka-division",
+                            "dhaka",
+                            "973"
+                        ]
+                    }
+                ],
+                "City": "Dhaka",
+                "Country": "Bangladesh",
+                "CountryCode": "BD",
+                "Display": "Dhaka, Dhaka Division, Bangladesh",
+                "LocationID": "973",
+                "Lat": "23.805646",
+                "Lng": "90.426193"
+            },
+            "Property": {
+                "Amenities": { ----> need the only any 3 amenities 
+                    "1": "Air Conditioner",
+                    "10": "Parking",
+                    "11": "Pet Friendly",
+                    "14": "TV",
+                    "2": "Balcony/Terrace",
+                    "3": "Bedding/Linens",
+                    "5": "Child Friendly",
+                    "7": "Internet",
+                    "8": "Kitchen",
+                    "9": "Laundry"
+                },
+                "Counts": {
+                   
+                },
+                "FeatureImage": "new-luxurious-3-bedroom-bd-dhaka-ha-61111684228-0.jpg", ----> need this img
+                "Image": {},
+                "IsNewListing": true,
+                "MinStay": 1,
+                "Price": 76.08,
+                "PropertyName": "New Luxurious 3 Bedroom Apartment with AC, WiFi in", ----> need this
+                "PropertySlug": "new-luxurious-3-bedroom-apartment-with-ac-wifi-in",
+                "PropertyType": "Apartment", --> need this
+                "PropertyTypeCategoryId": "1",
+                "ReviewScore": 10,
+                "ReviewScores": {},----> need this
+                "UpdatedAt": "2024-12-19T01:33:01.033830+00:00"
+            },
+            
+               
+            }
+        },
