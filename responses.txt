@@ -285,3 +285,14 @@ response:
 All the api call should be dynamic , example:
 https://www.rentbyowner.com/refine?search=Dhaka&order=1   ----> will show dhaka's property
 https://www.rentbyowner.com/refine?search=USA&order=1 ----> will show usa's property 
+
+-----------------------
+=================
+----------------------
+
+<div class="container">
+        <div class="row">
+           
+           here the property-tiles should come from javascript
+        </div>
+</div>
