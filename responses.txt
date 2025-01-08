@@ -134,50 +134,9 @@
     "Items": [
         {
             {
-            "ID": "HA-61111684228",
-            "Feed": 12,
-            "Published": true,
-            "GeoInfo": {
-                "Categories": [
-                    {
-                        "Name": "Bangladesh",
-                        "Slug": "bangladesh",
-                        "Type": "country",
-                        "Display": [
-                            "bangladesh"
-                        ]
-                    },
-                    {
-                        "Name": "Dhaka Division",
-                        "Slug": "bangladesh/dhaka-division",
-                        "Type": "state",
-                        "Display": [
-                            "bangladesh",
-                            "dhaka-division"
-                        ]
-                    },
-                    {
-                        "Name": "Dhaka",
-                        "Slug": "bangladesh/dhaka-division/dhaka/973",
-                        "Type": "city",
-                        "Display": [
-                            "bangladesh",
-                            "dhaka-division",
-                            "dhaka",
-                            "973"
-                        ]
-                    }
-                ],
-                "City": "Dhaka",
-                "Country": "Bangladesh",
-                "CountryCode": "BD",
-                "Display": "Dhaka, Dhaka Division, Bangladesh",
-                "LocationID": "973",
-                "Lat": "23.805646",
-                "Lng": "90.426193"
-            },
+            "ID": "HA-61111684228",   
             "Property": {
-                "Amenities": { ----> need the only any 3 amenities 
+                "Amenities": { ----> need only any 3 amenities 
                     "1": "Air Conditioner",
                     "10": "Parking",
                     "11": "Pet Friendly",
@@ -190,22 +149,139 @@
                     "9": "Laundry"
                 },
                 "Counts": {
-                   
+                    "Bedroom": 1,
+                    "Bathroom": 1,
+                    "Reviews": 40,-----> need this
+                    "Occupancy": 8
                 },
                 "FeatureImage": "new-luxurious-3-bedroom-bd-dhaka-ha-61111684228-0.jpg", ----> need this img
                 "Image": {},
                 "IsNewListing": true,
                 "MinStay": 1,
-                "Price": 76.08,
+                "Price": 76.08, -----> need this
                 "PropertyName": "New Luxurious 3 Bedroom Apartment with AC, WiFi in", ----> need this
                 "PropertySlug": "new-luxurious-3-bedroom-apartment-with-ac-wifi-in",
                 "PropertyType": "Apartment", --> need this
                 "PropertyTypeCategoryId": "1",
-                "ReviewScore": 10,
-                "ReviewScores": {},----> need this
-                "UpdatedAt": "2024-12-19T01:33:01.033830+00:00"
+                "ReviewScore": 10, ----> need this
+
             },
             
-               
             }
         },
+}
+----------------------------------------------------------
+========================== PROMPT ===================
+----------------------------------------------------------
+
+
+package routers
+
+import (
+	 "rentbyowner/controllers"
+	"github.com/beego/beego/v2/server/web"
+)
+
+func init() {
+
+	// Route to show the  page
+	web.Router("/", &controllers.ShowController{}, "get:ShowPage")
+	
+}
+____________
+package controllers  
+import ( 	     	
+    "github.com/beego/beego/v2/server/web"
+)  
+
+type ShowController struct 
+{ 	
+    web.Controller 
+}   
+// ShowPage
+func (c *ShowController) ShowPage() 
+{ 	  	c.TplName = "rentbyowner.tpl" }  
+_____________
+I am doing a Golang-Beego assignment. In the `rentbyowner.tpl` i need property informations to be fetched so at first it should hit this api 
+1. http://beta-mda.refine.lefttravel.com/v1/location?keyword=Dhaka and it contains a 
+response: 
+{ "Keyword": "dhaka", "GeoInfo": { "Center": {}, "City": "Dhaka", "Country": "Bangladesh", "CountryCode": "BD", "LocationID": "973", "IsPoi": false, "Lat": "23.810332", "Lng": "90.4125181", "LocationSlug": "bangladesh/dhaka-division/dhaka/973", "LocationType": "locality", "State": "Dhaka Division", "Neighborhood": {}, "GooglePlaceID": "ChIJgWsCh7C4VTcRwgRZ3btjpY8", "Region": "Dhaka District", "Place": "Dhaka", "FormattedAddress": "Dhaka, Bangladesh", "Slug": "bangladesh/dhaka-division/dhaka/973" } } Using only the "LocationSlug" of this API it should hit the 2nd api which is
+2. http://beta-mda.refine.lefttravel.com/v1/category/details/bangladesh:dhaka-division:dhaka:973?order=1&page=1&limit=192&feeds=11-12-24&items=1&locations=BD&device=desktop 
+response:
+{
+    "GeoInfo": {
+        "City": "Dhaka",
+        "Country": "Bangladesh",
+        "CountryCode": "BD",
+        "Display": [
+            "bangladesh",
+            "dhaka-division",
+            "dhaka",
+            "973"
+        ],
+        "GooglePlaceId": "ChIJgWsCh7C4VTcRwgRZ3btjpY8",
+        "LocationID": "973",
+        "IsPoi": false,
+        "Lat": "23.780653",
+        "Lng": "90.41366",
+        "LocationSlug": "bangladesh/dhaka-division/dhaka/973",
+        "LocationType": "city",
+        "PropertyCount": 400,
+        "ShortName": "Dhaka",
+        "Name": "Dhaka, Dhaka, Dhaka Division, Bangladesh",
+        "State": "Dhaka Division",
+        "SlugList": {
+            "en": "bangladesh/dhaka-division/dhaka/973",
+            "es": "bangladesh/dhaka-division/dhaka/973"
+        }
+    },
+    "Result": {
+        "Count": 569,
+        "ItemIDs": [
+            "HA-61111684228",
+            "BC-1178288",
+            and many more ...
+        ],
+        "AverageRating": 9.41
+    },
+I need all "ItemIDs" to fetch property data from this api below
+
+3. http://beta-mda.refine.lefttravel.com/v1/property/bookmark?propertyIdList=HA-61111684228,BC-1178288,HG-72845383857480,HA-61111679939,BC-1222735,HG-72507068728656,HA-611485278,BC-1794582,HG-72538056765568,HA-3211261378,BC-1035607,HG-72756652507480,HA-1217121620,BC-2794035,HG-72495753548372,HA-7311753046,BC-5287945,HG-72875575836580,HA-3211485768,BC-2764858,HG-72658766486857,HA-3211468707,BC-6664048,HG-72889077698084&countryCode=%20US&locations=%20BD&device=%20desktop
+-----------------------
+response:
+{
+    "Count": 24,
+    "Items": [
+        {
+            {
+            "ID": "HA-61111684228",   
+            "Property": {
+                "Amenities": { ----> need only any 3 amenities 
+                    "1": "Air Conditioner",
+                    "10": "Parking",
+                    "11": "Pet Friendly",
+                    "14": "TV",
+                    "2": "Balcony/Terrace",
+                    "3": "Bedding/Linens",
+                },
+                "Counts": {
+                    "Bedroom": 1,
+                    "Bathroom": 1,
+                    "Reviews": 40,-----> need this
+                },
+                "FeatureImage": "new-luxurious-3-bedroom-bd-dhaka-ha-61111684228-0.jpg", ----> need this img
+                "Price": 76.08, -----> need this
+                "PropertyName": "New Luxurious 3 Bedroom Apartment with AC, WiFi in", ----> need this
+                "PropertySlug": "new-luxurious-3-bedroom-apartment-with-ac-wifi-in",
+                "PropertyType": "Apartment", --> need this
+                "PropertyTypeCategoryId": "1",
+                "ReviewScore": 10, ----> need this
+
+            },
+            
+            }
+        },
+}
+All the api call should be dynamic , example:
+https://www.rentbyowner.com/refine?search=Dhaka&order=1   ----> will show dhaka's property
+https://www.rentbyowner.com/refine?search=USA&order=1 ----> will show usa's property 
