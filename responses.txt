@@ -278,7 +278,11 @@ response:
                 "ReviewScore": 10, ----> need this
 
             },
-            
+            "Partner": {
+                "ID": "1178288",
+                "PropertyType": "Hotels",
+                "URL": "https://www.booking.com/hotel/bd/lakeshore-banani-dhaka.html?aid=affiliate_id" ----> need this
+            }
             }
         },
 }
@@ -296,3 +300,121 @@ https://www.rentbyowner.com/refine?search=USA&order=1 ----> will show usa's prop
            here the property-tiles should come from javascript
         </div>
 </div>
+===============================================
+=========================================
+{
+    "Count": 24,
+    "Items": [
+        
+        {
+            "ID": "HG-72845383857480",
+            "Feed": 22,
+            "Published": true,
+            "GeoInfo": {
+                "Categories": [
+                    {
+                        "Name": "Bangladesh",
+                        "Slug": "bangladesh",
+                        "Type": "country",
+                        "Display": [
+                            "bangladesh"
+                        ]
+                    },
+                    {
+                        "Name": "Dhaka Division",
+                        "Slug": "bangladesh/dhaka-division",
+                        "Type": "state",
+                        "Display": [
+                            "bangladesh",
+                            "dhaka-division"
+                        ]
+                    },
+                    {
+                        "Name": "Dhaka",
+                        "Slug": "bangladesh/dhaka-division/dhaka/973",
+                        "Type": "city",
+                        "Display": [
+                            "bangladesh",
+                            "dhaka-division",
+                            "dhaka",
+                            "973"
+                        ]
+                    },
+                    {
+                        "Name": "Uttara",
+                        "Slug": "bangladesh/dhaka-division/dhaka/uttara",
+                        "Type": "neighborhood",
+                        "Display": [
+                            "bangladesh",
+                            "dhaka-division",
+                            "dhaka",
+                            "uttara"
+                        ]
+                    }
+                ],
+                "City": "Sector 12",
+                "Country": "Bangladesh",
+                "CountryCode": "BD",
+                "Display": "Uttara, Dhaka, Dhaka Division, Bangladesh",
+                "LocationID": "3000429495",
+                "Lat": "23.8729448",
+                "Lng": "90.3837757"
+            },
+            "Property": {
+                "Amenities": {
+                    "1": "Air Conditioner",
+                    "10": "Parking",
+                    "29": "Sports/Activities",
+                    "3": "Bedding/Linens",
+                    "34": "Restaurant",
+                    "37": "Guest Services",
+                    "4": "Breakfast",
+                    "5": "Child Friendly",
+                    "7": "Internet",
+                    "8": "Kitchen",
+                    "9": "Laundry"
+                },
+                "Counts": {
+                    "Bedroom": 1,
+                    "Bathroom": 1,
+                    "Reviews": 40,
+                    "Occupancy": 8
+                },
+                "FeatureImage": "hostel-8-guests-bd-sector-12-hg-72845383857480-0.jpg",
+                "Image": {},
+                "MinStay": 1,
+                "Price": 24,
+                "PropertyName": "Hostel ∙ 8 guests",
+                "PropertySlug": "hostel-8-guests",
+                "PropertyType": "Hostel",
+                "PropertyTypeCategoryId": "4",
+                "ReviewScore": 10,
+                "ReviewScores": {},
+                "StarRating": 5,
+                "UpdatedAt": "2025-01-01T17:49:57.990131+00:00"
+            },
+            "Partner": {
+                "ID": "72845383857480",
+                "OwnerID": "6be7529ebef525ff",
+                "PropertyType": "Hostel",
+                "URL": "https://www.hometogo.com/search/5c179feea2f5f?campaign=api/all/a/leftTravel/5c179feea2f5f//affiliate_label/6be7529ebef525ff&pricetype=totalPrice&showFullPrice=1&partner=leftTravel&tag=affiliate_label&at=api&id=6be7529ebef525ff@f@a"
+            }
+        },
+}
+I need every Item's  
+1. "Categories"-->"Display"--->last two values. ----> if some items doesn not have this keep this null
+2. "Partner" --> "URL" ----> if some items doesn not have this keep this null
+3. "StarRating" ----> if some items doesn not have this keep this null
+
+=================
+<div class="info">
+      <ul class="location-list">
+        <li>"Categories"-->"Display"--->[0]</li>
+        <li> > </li>
+        <li>"Categories"-->"Display"--->[1]</li>
+    </ul>
+</div>
+=================
+# Info 
+  - `rentbyowner.go` and `script.js` : fetch all the data from controllers/rentbyowner.go into script.js
+  - `rentbyowner.tpl` and `rentbyowner.css` : added css for header and search button & box

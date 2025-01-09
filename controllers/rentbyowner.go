@@ -16,14 +16,17 @@ type PropertyController struct {
 type RawResponse map[string]interface{}
 
 type Property struct {
-    ID            string   `json:"ID"`
-    Amenities     []string `json:"Amenities"`
-    Reviews       int      `json:"Reviews"`
-    FeatureImage  string   `json:"FeatureImage"`
-    Price         float64  `json:"Price"`
-    PropertyName  string   `json:"PropertyName"`
-    PropertyType  string   `json:"PropertyType"`
-    ReviewScore   float64  `json:"ReviewScore"`   
+    ID            string    `json:"ID"`
+    Amenities     []string  `json:"Amenities"`
+    Reviews       int       `json:"Reviews"`
+    FeatureImage  string    `json:"FeatureImage"`
+    Price         float64   `json:"Price"`
+    PropertyName  string    `json:"PropertyName"`
+    PropertyType  string    `json:"PropertyType"`
+    ReviewScore   float64   `json:"ReviewScore"`
+    Categories    [2]string `json:"Categories"`
+    PartnerURL    string    `json:"PartnerURL"`
+    StarRating    int       `json:"StarRating"`
 }
 
 func (c *PropertyController) ShowProperties() {
@@ -74,7 +77,7 @@ func (c *PropertyController) GetProperties() {
 
     // Format LocationSlug for second API
     formattedSlug := strings.ReplaceAll(locationSlug, "/", ":")
-    fmt.Printf("Formatted Slug: %s\n", formattedSlug)
+    //fmt.Printf("Formatted Slug: %s\n", formattedSlug)
 
     // Second API Call with required headers
     secondAPIURL := fmt.Sprintf(
@@ -97,7 +100,7 @@ func (c *PropertyController) GetProperties() {
     defer resp2.Body.Close()
 
     body2, _ := ioutil.ReadAll(resp2.Body)
-    fmt.Printf("Second API Response: %s\n", string(body2))
+    //fmt.Printf("Second API Response: %s\n", string(body2))
 
     var secondAPIResp RawResponse
     if err := json.Unmarshal(body2, &secondAPIResp); err != nil {
@@ -167,6 +170,7 @@ func (c *PropertyController) GetProperties() {
         c.ServeJSON()
         return
     }
+    
 
     filteredProperties := []Property{}
     for _, item := range propertyDetails["Items"].([]interface{}) {
@@ -214,6 +218,35 @@ func (c *PropertyController) GetProperties() {
         if val, ok := property["ReviewScore"].(float64); ok {
             reviewScore = val
         }
+        
+		// Extract last two values from Categories -> Display
+        categories := [2]string{"", ""}
+        if geoInfo, ok := item.(map[string]interface{})["GeoInfo"].(map[string]interface{}); ok {
+            if categoriesList, ok := geoInfo["Categories"].([]interface{}); ok {
+                for _, category := range categoriesList {
+                    if display, ok := category.(map[string]interface{})["Display"].([]interface{}); ok {
+                        if len(display) >= 2 {
+                            categories[0] = strings.Title(display[len(display)-1].(string))
+                            categories[1] = strings.Title(display[len(display)-2].(string))
+                        }
+                    }
+                }
+            }
+        }
+
+        // Extract Partner URL
+        partnerURL := "null"
+        if partner, ok := item.(map[string]interface{})["Partner"].(map[string]interface{}); ok {
+            if url, ok := partner["URL"].(string); ok {
+                partnerURL = url
+            }
+        }
+
+        // Extract StarRating
+        starRating := 0
+        if star, ok := property["StarRating"].(float64); ok {
+            starRating = int(star)
+        }
 
         filteredProperty := Property{
             ID:           item.(map[string]interface{})["ID"].(string),
@@ -224,6 +257,9 @@ func (c *PropertyController) GetProperties() {
             PropertyName: propertyName,
             PropertyType: propertyType,
             ReviewScore:  reviewScore,
+            Categories:   categories,
+            PartnerURL:   partnerURL,
+            StarRating:   starRating,
         }
 
         filteredProperties = append(filteredProperties, filteredProperty)
@@ -235,4 +271,6 @@ func (c *PropertyController) GetProperties() {
         "properties": filteredProperties,
     }
     c.ServeJSON()
+	c.TplName = "rentbyowner.tpl"
+    c.Render()
 }
