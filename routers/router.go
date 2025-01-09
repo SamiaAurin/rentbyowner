@@ -7,6 +7,6 @@ import (
 )
 
 func init() {
-	// Route for showing properties dynamically
-	web.Router("/properties", &controllers.PropertyController{}, "get:ShowProperties")
+    web.Router("/properties", &controllers.PropertyController{}, "get:GetProperties")
+    web.Router("/showproperties", &controllers.PropertyController{}, "get:ShowProperties")
 }

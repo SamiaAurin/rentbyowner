@@ -6,6 +6,41 @@
     font-family: sans-serif;
 }
 
+/* Header CSS */
+.header-container{
+    position: fixed;
+    width: 100%;
+    z-index: 110;
+    top: 0;
+    left: 0;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #013573;
+    height: 97px;
+    padding: 5px;
+    transition: all .3s linear 0s;
+}
+
+.search-btn{
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    display: block;
+    border-radius: 50%;
+    line-height: 33px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Property Tiles CSS*/
+.property-tiles-container{
+    margin-top: 150px;
+}
 .property-tiles{
     background-color: #fff;
     overflow: hidden;

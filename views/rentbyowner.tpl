@@ -13,8 +13,21 @@
     <title>RentByOwner</title>
 </head>
 <body>
+    
+    <header class="header-container">
+        <div class="header">
+            <a href="/">
+                <img src="https://static.rentbyowner.com/release/28.0.6/static/images/sites/rentbyowner.com/header_logo.svg" alt="renbyowner logo">
+            </a>
+            <span class="">
+                <span class="search-btn" id="js-btn-search">
+                    <i class="fas fa-search"></i>
+                </span>
+            </span>
+        </div>
+    </header>
 
-    <div class="container">
+    <div class="container property-tiles-container">
         <div class="row" id="js-property-tiles">
             
         </div>
