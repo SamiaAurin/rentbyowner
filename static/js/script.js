@@ -40,6 +40,20 @@ document.addEventListener("DOMContentLoaded", function() {
             tilesContainer.innerHTML += shimmerTile;
         }
     }
+    
+    function performSearch() {
+        const searchQuery = searchInput.value;
+        if (searchQuery) {
+            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&order=1`;
+            history.pushState(null, '', newUrl);
+            
+            // Show shimmer effect
+            showShimmerEffect();
+
+            // Fetch and display properties
+            fetchAndDisplayProperties(searchQuery);
+        }
+    }
 
     searchBtn.addEventListener('click', function() {
         searchBox.style.display = 'flex';
@@ -50,14 +64,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     searchSubmit.addEventListener('click', function() {
-        const searchQuery = searchInput.value;
-        if (searchQuery) {
-           
-            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&order=1`;
-            history.pushState(null, '', newUrl);
-            showShimmerEffect();
-            // Fetch The Property Deatils
-            fetchAndDisplayProperties(searchQuery);
+        performSearch();
+    });
+
+    searchInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            performSearch();
         }
     });
 
