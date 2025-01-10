@@ -342,3 +342,8 @@
     }
 }
 
+@media  (max-width: 375px) {
+    .search-box input {
+        width: 200px;
+    }
+}
