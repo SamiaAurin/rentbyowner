@@ -81,7 +81,7 @@ func (c *PropertyController) GetProperties() {
 
     // Second API Call with required headers
     secondAPIURL := fmt.Sprintf(
-        "http://beta-mda.refine.lefttravel.com/v1/category/details/%s?order=1&page=1&limit=192&feeds=11-12-24&items=1&locations=BD&device=desktop",
+        "http://beta-mda.refine.lefttravel.com/v1/category/details/%s?order=1&page=1&limit=100&feeds=11-12-24&items=1&locations=BD&device=desktop",
         formattedSlug,
     )
     

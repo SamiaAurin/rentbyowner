@@ -5,27 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const searchSubmit = document.getElementById('search-submit');
     const closeBtn = document.getElementById('js-btn-close');
     const tilesContainer = document.getElementById('js-property-tiles');
-
-    searchBtn.addEventListener('click', function() {
-        searchBox.style.display = 'flex';
-    });
-
-    closeBtn.addEventListener('click', function() {
-        searchBox.style.display = 'none';
-    });
-
-    searchSubmit.addEventListener('click', function() {
-        const searchQuery = searchInput.value;
-        if (searchQuery) {
-           
-            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&order=1`;
-            history.pushState(null, '', newUrl);
-            
-            // Fetch The Property Deatils
-            fetchAndDisplayProperties(searchQuery);
-        }
-    });
-
+    
     // Shimmer effect when someone search for a place
     function showShimmerEffect() {
         tilesContainer.innerHTML = '';
@@ -61,6 +41,27 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    searchBtn.addEventListener('click', function() {
+        searchBox.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', function() {
+        searchBox.style.display = 'none';
+    });
+
+    searchSubmit.addEventListener('click', function() {
+        const searchQuery = searchInput.value;
+        if (searchQuery) {
+           
+            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&order=1`;
+            history.pushState(null, '', newUrl);
+            showShimmerEffect();
+            // Fetch The Property Deatils
+            fetchAndDisplayProperties(searchQuery);
+        }
+    });
+
+    
     async function fetchAndDisplayProperties(searchQuery) {
         try {
             const response = await fetch(`/properties?search=${encodeURIComponent(searchQuery)}&order=1`);
@@ -194,8 +195,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fetch and display properties based on the initial URL query
     const urlParams = new URLSearchParams(window.location.search);
     const initialSearchQuery = urlParams.get('search');
+    
     if (initialSearchQuery) {
-        showShimmerEffect();
         fetchAndDisplayProperties(initialSearchQuery);
     }
 });

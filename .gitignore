@@ -1,5 +1,6 @@
 # Ignore all .exe files except rentbyowner.exe
 *.exe
+rentbyowner
 !rentbyowner.exe
 
 # Keep rentbyowner.exe~ file
