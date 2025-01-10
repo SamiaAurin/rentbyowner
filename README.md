@@ -34,4 +34,5 @@ bee run
 Open your browser and navigate to: http://localhost:8080/showproperties
 
 ### Step 3: Search Country
-Click the search icon in the header , write any country in the search-box and press the search button. 
+Click the search icon in the header , write any country in the search-box and press the search button or press enter. 
+Example: If you search for `France` your URL will be: http://localhost:8080/showproperties?search=France&order=1 and it will show the properties of France.
