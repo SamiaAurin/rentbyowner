@@ -118,7 +118,7 @@ func (c *PropertyController) GetProperties() {
         c.ServeJSON()
         return
     }
-
+    
     itemIDsInterface, ok := result["ItemIDs"].([]interface{})
     if !ok {
         c.Data["json"] = map[string]interface{}{
@@ -144,13 +144,24 @@ func (c *PropertyController) GetProperties() {
         c.ServeJSON()
         return
     }
+    // CountryCode from GeoInfo
+    countryCode, ok := geoInfo["CountryCode"].(string)
+    if !ok {
+        c.Data["json"] = map[string]interface{}{
+            "error": "Invalid or missing CountryCode",
+        }
+        c.ServeJSON()
+        return
+    }
 
     // Third API Call
     thirdAPIURL := fmt.Sprintf(
-        "http://beta-mda.refine.lefttravel.com/v1/property/bookmark?propertyIdList=%s&countryCode=US&locations=BD&device=desktop",
+        "http://beta-mda.refine.lefttravel.com/v1/property/bookmark?propertyIdList=%s&countryCode=%s&locations=BD&device=desktop",
         strings.Join(itemIDs, ","),
+        countryCode,
     )
-    
+    fmt.Printf("Third API: %s\n", thirdAPIURL)
+
     req3, _ := http.NewRequest("GET", thirdAPIURL, nil)
     // Use the same headers for consistency
     req3.Header.Set("Accept-Language", "en-US")

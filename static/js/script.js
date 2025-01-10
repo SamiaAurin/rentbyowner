@@ -17,14 +17,49 @@ document.addEventListener("DOMContentLoaded", function() {
     searchSubmit.addEventListener('click', function() {
         const searchQuery = searchInput.value;
         if (searchQuery) {
-            // Update the URL without reloading the page
+           
             const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&order=1`;
             history.pushState(null, '', newUrl);
             
-            // Fetch and display properties
+            // Fetch The Property Deatils
             fetchAndDisplayProperties(searchQuery);
         }
     });
+
+    // Shimmer effect when someone search for a place
+    function showShimmerEffect() {
+        tilesContainer.innerHTML = '';
+        for (let i = 0; i < 6; i++) {
+            const shimmerTile = `
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="property-tiles shimmer-wrapper">
+                        <div class="tiles-img">
+                            <div class="shimmer"></div>
+                        </div>
+                        <div class="tiles-details">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="shimmer"></div>
+                            <div class="tiles-btn">
+                                <div class="col-xs-5 col-sm-5 col-md-6">
+                                    <a href="">
+                                        <img src="" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 col-md-6">
+                                    <div class="view-line">
+                                        <a href=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            tilesContainer.innerHTML += shimmerTile;
+        }
+    }
 
     async function fetchAndDisplayProperties(searchQuery) {
         try {
@@ -33,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
             
             if (data.success) {
                 const properties = data.properties;
-                
 
                 // Clear the container
                 tilesContainer.innerHTML = '';
@@ -41,27 +75,31 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Loop through properties and create tiles
                 properties.forEach(property => {
                     const categories = property.Categories;
-                    
-                    //  HTML for star rating 
+                    const partnerURL = property.PartnerURL;
+
+                    // HTML for star rating 
                     let starRatingHtml = '';
                     if (property.StarRating > 0) {
                         starRatingHtml = `
-                            <div class="rating star-icons-${property.StarRating}">
+                            <div class="rating">
                                 ${'&#9733;'.repeat(property.StarRating)}
                             </div>
                             <span class="divider"> | </span>
                         `;
                     }
 
-                    //  Review or Reviews Text
-                    const reviewText = property.Reviews === 1 ? 'Review' : 'Reviews';
+                    // Review or Reviews Text
+                    const reviewText = (property.Reviews === 0 || property.Reviews === 1) ? 'Review' : 'Reviews';
 
                     const tile = `
                         <div class="col-xs-12 col-sm-6 col-lg-4">
                             <div class="property-tiles">
                                 <div class="tiles-icon">
                                     <div class="fav-icon">
-                                        <i class="fa-regular fa-heart"></i>
+                                        <i class="fa-regular fa-heart" data-id="${property.ID}" data-type="regular"></i>
+                                    </div>
+                                    <div class="fav-icon" style="display:none; color:red;">
+                                       <i class="fa-solid fa-heart" data-id="${property.ID}" data-type="solid"></i>
                                     </div>
                                 </div>
                                 <div class="tiles-img">
@@ -102,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     </div>
                                     <div class="tiles-btn">
                                         <div class="website-btn col-xs-5 col-sm-5 col-md-6">
-                                            <a href="">
+                                            <a href="${partnerURL}">
                                                 <img src="https://static.rentbyowner.com/release/28.0.6/static/images/booking.svg" alt="Booking.com">
                                             </a>
                                         </div>
@@ -118,6 +156,33 @@ document.addEventListener("DOMContentLoaded", function() {
                     `;
                     tilesContainer.innerHTML += tile;
                 });
+
+                // Event listeners for heart icons
+                const regularHearts = document.querySelectorAll('.fa-regular.fa-heart');
+                const solidHearts = document.querySelectorAll('.fa-solid.fa-heart');
+
+                regularHearts.forEach(heart => {
+                    const propertyId = heart.getAttribute('data-id');
+                    if (localStorage.getItem(`isFavorite-${propertyId}`) === 'true') {
+                        heart.parentElement.style.display = 'none';
+                        heart.parentElement.nextElementSibling.style.display = 'block';
+                    }
+
+                    heart.addEventListener('click', function() {
+                        heart.parentElement.style.display = 'none';
+                        heart.parentElement.nextElementSibling.style.display = 'block';
+                        localStorage.setItem(`isFavorite-${propertyId}`, 'true');
+                    });
+                });
+
+                solidHearts.forEach(heart => {
+                    const propertyId = heart.getAttribute('data-id');
+                    heart.addEventListener('click', function() {
+                        heart.parentElement.style.display = 'none';
+                        heart.parentElement.previousElementSibling.style.display = 'block';
+                        localStorage.setItem(`isFavorite-${propertyId}`, 'false');
+                    });
+                });
             } else {
                 console.error('Error fetching property data:', data.error);
             }
@@ -130,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const initialSearchQuery = urlParams.get('search');
     if (initialSearchQuery) {
+        showShimmerEffect();
         fetchAndDisplayProperties(initialSearchQuery);
     }
 });

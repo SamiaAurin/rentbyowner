@@ -35,7 +35,157 @@
     </div>
     <div class="container property-tiles-container">
         <div class="row" id="js-property-tiles">
-            
+            <!-- Shimmer Effects -->
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="property-tiles shimmer-wrapper">
+                    <div class="tiles-img">
+                        <div class="shimmer"></div>
+                    </div>
+                    <div class="tiles-details">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="shimmer"></div>
+                        <div class="tiles-btn">
+                            <div class="col-xs-5 col-sm-5 col-md-6">
+                                <a href="">
+                                    <img src="" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-7 col-md-6">
+                                <div class="view-line">
+                                    <a href=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="property-tiles shimmer-wrapper">
+                    <div class="tiles-img">
+                        <div class="shimmer"></div>
+                    </div>
+                    <div class="tiles-details">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="shimmer"></div>
+                        <div class="tiles-btn">
+                            <div class="col-xs-5 col-sm-5 col-md-6">
+                                <a href="">
+                                    <img src="" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-7 col-md-6">
+                                <div class="view-line">
+                                    <a href=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="property-tiles shimmer-wrapper">
+                    <div class="tiles-img">
+                        <div class="shimmer"></div>
+                    </div>
+                    <div class="tiles-details">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="shimmer"></div>
+                        <div class="tiles-btn">
+                            <div class="col-xs-5 col-sm-5 col-md-6">
+                                <a href="">
+                                    <img src="" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-7 col-md-6">
+                                <div class="view-line">
+                                    <a href=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="property-tiles shimmer-wrapper">
+                    <div class="tiles-img">
+                        <div class="shimmer"></div>
+                    </div>
+                    <div class="tiles-details">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="shimmer"></div>
+                        <div class="tiles-btn">
+                            <div class="col-xs-5 col-sm-5 col-md-6">
+                                <a href="">
+                                    <img src="" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-7 col-md-6">
+                                <div class="view-line">
+                                    <a href=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="property-tiles shimmer-wrapper">
+                    <div class="tiles-img">
+                        <div class="shimmer"></div>
+                    </div>
+                    <div class="tiles-details">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="shimmer"></div>
+                        <div class="tiles-btn">
+                            <div class="col-xs-5 col-sm-5 col-md-6">
+                                <a href="">
+                                    <img src="" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-7 col-md-6">
+                                <div class="view-line">
+                                    <a href=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="property-tiles shimmer-wrapper">
+                    <div class="tiles-img">
+                        <div class="shimmer"></div>
+                    </div>
+                    <div class="tiles-details">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="shimmer"></div>
+                        <div class="tiles-btn">
+                            <div class="col-xs-5 col-sm-5 col-md-6">
+                                <a href="">
+                                    <img src="" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-7 col-md-6">
+                                <div class="view-line">
+                                    <a href=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

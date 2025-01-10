@@ -36,7 +36,7 @@
     text-align: center;
     display: inline-block;
 }
-/* Styles for the search box */
+/* CSS for the search box */
 .search-box {
     display: flex;
     justify-content: center;
@@ -83,6 +83,42 @@
     margin-left: 10px;
 }
 /* Header CSS ENDS*/
+
+/* Shimmer Effect */
+.line {
+    width: 100%;
+    height: 20px;
+    background: #bbb;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.view-line {
+    width: 90%;
+    height: 36px;
+    border-radius: 5px;
+    background: #bbb;
+}
+.shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 80%);
+    animation: shimmer 2s infinite linear;
+}
+@keyframes shimmer {
+    from {
+        transform: translateX(-200%);
+    }
+    to {
+        transform: translateX(200%);
+    }
+}
+
 /* Property Tiles CSS*/
 .property-tiles-container{
     margin-top: 150px;
@@ -96,9 +132,6 @@
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 0 9px rgba(0,0,0,8%);
-    -moz-transition: all .3s cubic-bezier(.165,.84,.44,1);
-    -o-transition: all .3s cubic-bezier(.165,.84,.44,1);
-    transition: all .3s cubic-bezier(.165,.84,.44,1)
 }
 
 .property-tiles .tiles-icon{
