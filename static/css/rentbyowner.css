@@ -83,7 +83,35 @@
     margin-left: 10px;
 }
 /* Header CSS ENDS*/
+/* Filter and Sort buttons CSS STARTS*/
+.filter-sort-btns{
+    display: block;
+    margin-top: 150px;
+}
+.filter-btns{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
 
+   .filters{
+    margin-bottom: 5px;
+    
+    button{
+        margin: 0 10px 0 0;
+        padding: 10px 25px;
+        font-size: .75rem;
+        color: #103076;
+        line-height: 20px;
+        border: none;
+        background-color: #fff;
+        border-radius: 10px;
+        transition: all .3s ease;
+        box-shadow: 0 4px 3px rgba(0, 0, 0, .15), 0 0 3px rgba(0, 0, 0, .15), 0 0 1px rgba(0, 0, 0, .5);
+    }
+    
+   }
+}
+/* Filter and Sort buttons CSS ENDS*/
 /* Shimmer Effect */
 .line {
     width: 100%;
