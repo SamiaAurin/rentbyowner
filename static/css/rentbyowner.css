@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 /* Header CSS STARTS*/
@@ -111,6 +110,100 @@
     
    }
 }
+.filters button:hover{
+    background-color: #103076;
+    color: #fff;
+}
+
+.sort{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: left;
+}
+.sort-title {
+    color: #013573;
+    font-size: 1rem;
+    font-weight: 700;
+    padding-right: 10px;
+    overflow: hidden;
+}
+
+.sort-dropdown {
+    display: inline-block;
+    width: 195px;
+    position: relative;
+    z-index: 200;
+}
+.sort-dropdown .default-option {
+    border: 2px solid #013573;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+    text-align: left;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+.sort-dropdown .default-option li{
+    padding: 0 10px;
+}
+.sort-dropdown .option {
+    display: flex;
+    align-items: center;
+}
+.sort-dropdown .default-option:before {
+    content: " ";
+    position: absolute;
+    margin-top: -8px;
+    top: 50%;
+    right: 18px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid;
+    border-color: transparent transparent #555 #555;
+    transform: rotate(-45deg);  
+}
+
+/* Arrow  when dropdown is active */
+.sort-dropdown.active .default-option:before {
+    transform: rotate(315deg);
+    border-color: #555 #555 transparent transparent;
+}
+
+.sort-dropdown .option p {
+    color: #103076;
+    font-size: .875rem;
+}
+.sort-dropdown .default-option .option p {
+    margin: 10px 0;
+}
+.sort-dropdown .select-ul {
+    border: none;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    list-style: none;
+    cursor: pointer;
+    display: none;
+    z-index: 900;
+    padding: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .15), 0 0 3px rgba(0, 0, 0, .15), 0 0 1px rgba(0, 0, 0, .5);
+}
+.sort-dropdown .select-ul li{
+    cursor: pointer;
+    padding: 8px;   
+}
+.sort-dropdown .select-ul li .option p {
+    color: #393b44 !important;
+    margin: 0;
+}
+
 /* Filter and Sort buttons CSS ENDS*/
 /* Shimmer Effect */
 .line {
