@@ -40,20 +40,36 @@
             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
                <div class="filter-btns">
                    <div class="filters">
-                     <button class="filter-date-btn">Dates</button>
-                     <span></span>
+                     <button id="filter-date-btn">Dates</button>
+                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                        <svg class="icon">
+                            <use xlink:href="#close"></use>
+                        </svg>
+                    </span>
                    </div>
                    <div class="filters">
-                     <button class="filter-price-btn">Price</button>
-                     <span></span>
+                     <button id="filter-price-btn">Price</button>
+                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                        <svg class="icon">
+                            <use xlink:href="#close"></use>
+                        </svg>
+                    </span>
                    </div>
                    <div class="filters">
-                     <button class="filter-guests-btn">Guests</button>
-                     <span></span>
+                     <button id="filter-guests-btn">Guests</button>
+                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                        <svg class="icon">
+                            <use xlink:href="#close"></use>
+                        </svg>
+                    </span>
                    </div>
                    <div class="filters">
-                     <button class="filter-more-btn">More Filters</button>
-                     <span></span>
+                     <button id="filter-more-btn">More Filters</button>
+                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                        <svg class="icon">
+                            <use xlink:href="#close"></use>
+                        </svg>
+                    </span>
                    </div>
                </div>
             </div>
@@ -101,7 +117,7 @@
         </div>
     </div>
     <!-- Filer and Sort Buttons Ends -->
-     
+
     <!-- Property Tiles Container Starts -->
     <div class="container property-tiles-container">
         <div class="row" id="js-property-tiles">
@@ -259,6 +275,262 @@
         </div>
     </div>
     
+
+
+
+    <!--
+    <div class="calendar modal" id="js-date-picker" data-layout="overlay">
+        <div class="js-modal-content modal-content">
+            <div class="modal-header relative">
+                <div class="calendar-title font-bold">When do you want to travel?</div>
+                <div class="calendar-close cursor-pointer" id="js-date-picker-close">
+                    <svg class="icon">
+                        <use xlink:href="#cross"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="top">
+                    <input type="hidden" id="js-date-range" value="2025-01-14 - 2025-01-15">
+                    <div id="js-calendar-container"><div id="datepicker-js-date-range" style="" class="datepicker  datepicker--open"><div class="datepicker__inner"><div class="datepicker__months"><table id="month-1-js-date-range" class="datepicker__month datepicker__month--month1"><thead><tr class="datepicker__month-caption"><th><span class="datepicker__month-button datepicker__month-button--prev  datepicker__month-button--disabled" month="1">&lt;</span></th><th colspan="5" class="datepicker__month-name">January 2025</th><th><span class="datepicker__month-button datepicker__month-button--next datepicker__month-button--disabled" month="1">&gt;</span></th></tr><tr class="datepicker__week-days"><th class="datepicker__week-name">Sun</th><th class="datepicker__week-name">Mon</th><th class="datepicker__week-name">Tue</th><th class="datepicker__week-name">Wed</th><th class="datepicker__week-name">Thu</th><th class="datepicker__week-name">Fri</th><th class="datepicker__week-name">Sat</th></tr></thead><tbody><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--invalid        " time="1735408800000">29</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--invalid        " time="1735495200000">30</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--invalid        " time="1735581600000">31</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735668000000">1</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735754400000">2</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735840800000">3</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735927200000">4</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736013600000">5</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736100000000">6</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736186400000">7</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736272800000">8</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736359200000">9</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736445600000">10</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736532000000">11</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736618400000">12</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid datepicker__month-day--today    datepicker__month-day--checkin-only   " time="1736704800000">13</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid         datepicker__month-day--first-day-selected" time="1736791200000">14</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid         datepicker__month-day--selected datepicker__month-day--last-day-selected" time="1736877600000">15</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1736964000000">16</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737050400000">17</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737136800000">18</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737223200000">19</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737309600000">20</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737396000000">21</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737482400000">22</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737568800000">23</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737655200000">24</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737741600000">25</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737828000000">26</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737914400000">27</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738000800000">28</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738087200000">29</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738173600000">30</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738260000000">31</td><td class="datepicker__month-day datepicker__month-day--nextMonth datepicker__month-day--valid        " time="1738346400000">1</td></tr></tbody></table><table id="month-2-js-date-range" class="datepicker__month datepicker__month--month2"><thead><tr class="datepicker__month-caption"><th><span class="datepicker__month-button datepicker__month-button--prev datepicker__month-button--disabled" month="2">&lt;</span></th><th colspan="5" class="datepicker__month-name">February 2025</th><th><span class="datepicker__month-button datepicker__month-button--next" month="2">&gt;</span></th></tr><tr class="datepicker__week-days"><th class="datepicker__week-name">Sun</th><th class="datepicker__week-name">Mon</th><th class="datepicker__week-name">Tue</th><th class="datepicker__week-name">Wed</th><th class="datepicker__week-name">Thu</th><th class="datepicker__week-name">Fri</th><th class="datepicker__week-name">Sat</th></tr></thead><tbody><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1737828000000">26</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1737914400000">27</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738000800000">28</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738087200000">29</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738173600000">30</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738260000000">31</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738346400000">1</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738432800000">2</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738519200000">3</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738605600000">4</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738692000000">5</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738778400000">6</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738864800000">7</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738951200000">8</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739037600000">9</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739124000000">10</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739210400000">11</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739296800000">12</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739383200000">13</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739469600000">14</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739556000000">15</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739642400000">16</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739728800000">17</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739815200000">18</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739901600000">19</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739988000000">20</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740074400000">21</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740160800000">22</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740247200000">23</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740333600000">24</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740420000000">25</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740506400000">26</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740592800000">27</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740679200000">28</td><td class="datepicker__month-day datepicker__month-day--nextMonth datepicker__month-day--valid        " time="1740765600000">1</td></tr></tbody></table></div><div style="display:none" id="tooltip-js-date-range" class="datepicker__tooltip"></div></div></div></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-md-7">
+                        <div class="calendar-footer-left-section hidden js-partner-footer">
+                            <div class="calendar-footer-title font-14">We search <span class="color-accent">multiple sites</span> to find you <span class="alt-nobr"> the <span class="color-accent">best prices.</span></span></div>
+                            <div class="calendar-footer-partner-logo">
+                                <ul class="d-flex align-item-center justify-content-center">
+                                    <li>
+                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/booking.svg" alt="booking">
+                                    </li>
+                                    <li>
+                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/kayak.svg" alt="kayak">
+                                    </li>
+                                    <li>
+                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/expedia_v2.svg" alt="expedia">
+                                    </li>
+                                    <li>
+                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/vrbo.svg" alt="vrbo">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-5">
+                        <div class="calender-buttons calender-buttons-controller">
+                            <button class="btn-skip"><span id="js-date-cancel" class="hidden">Skip</span></button>
+                            <button class="btn-continue" id="js-date-select">
+                                <span id="js-date-select-text">Continue</span>
+                                <span id="js-date-select-nights">1 Night</span>
+                            </button>
+                        </div>
+                        <div class="compare-price hidden js-partner-footer">
+                            <label class="compare-price-check-box relative font-13 d-block">
+                                <span class="inline-block ellipsis w-full" title="Compare Price with Other Partners">Compare Price with Other Partners</span>
+                                <input class="absolute cursor-pointer" type="checkbox" checked="">
+                                <span class="checkbox absolute inline-block"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    -->
+    
+    
+    <div class="filter-modal-popup" id="js-filter-modal" style="display: none;">
+        <div class="modal-overlay" id="js-filter-modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                &nbsp;
+            </div>
+            <div class="modal-body">
+                <div class="top">
+                    <div class="filter-pop-up-container">
+                        <div class="modal-title">
+                            Filters
+                            <div class="modal-close-btn" id="js-filter-close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <div class="modal-subtitle">Type of property</div>
+                        <div class="popup-check-box">
+                            <div class="row">
+                                <div class="col-xs-9 col-sm-9 col-md-9" style="position: relative;">
+                                    <div class="icon-left">
+                                        <img class="pet-marker" src="https://static.rentbyowner.com/release/28.0.6/static/images/paw.svg" alt="petfirendly" loading="lazy" width="23" height="23">
+                                    </div>
+                                    <div class="checkbox-wrapper">
+                                        <div class="popup-check-box-label-title">
+                                            Pet-friendly only
+                                            <a href="https://www.petfriendly.io/" target="_blank" class="js-pet-site-link"> (Learn More) </a>
+                                        </div>
+                                        <div class="popup-check-box-label-sub-title">
+                                            Show only pet-friendly properties
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="popup-single-check-box relative visible cursor-pointer font-22">
+                                        <input class="js-pet-friendly" type="checkbox" id="amenity-11" onclick="filterScript.filterCheckListener(this);">
+                                        <span class="checkmark">&nbsp;</span>
+                                    </label>
+                                </div>
+                            </div>
+    
+                            <div class="row" id="js-eco-friendly-filter">
+                                <div class="col-xs-9 col-sm-9 col-md-9" style="position: relative;">
+                                    <div class="icon-left">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="checkbox-wrapper">
+                                        <div class="popup-check-box-label-title">
+                                            Eco-friendly only
+                                            <a href="https://www.onedegreeleft.com" target="_blank"> (Learn More) </a>
+                                        </div>
+                                        <div class="popup-check-box-label-sub-title">
+                                            Show only eco-friendly properties
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="popup-single-check-box">
+                                        <input class="absolute cursor-pointer" type="checkbox" id="js-eco-friendly" onclick="filterScript.filterCheckListener(this);">
+                                        <span class="checkmark absolute">&nbsp;</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+    
+                        
+                        <div class="select-check-in-out">
+                            <div class="popup-check-box-label-title">
+                                Select a date
+                            </div>
+                            <div class="popup-check-box-label-sub-title">
+                                When do you want to travel?
+                            </div>
+                            <div class="check-in-out-all" id="js-filter-dates">
+                                <div class="single-check-in-out">
+                                    <span> Check-in</span>
+                                    <input type="text" placeholder="" id="js-checkin" readonly="" value="">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </div>
+                                <div class="single-check-in-out">
+                                    <span> Check-out</span>
+                                    <input type="text" placeholder="" id="js-checkout" readonly="" value="">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="guest-filter">
+                            <div class="guest-filter-container">
+                                <div class="popup-check-box-label-title">
+                                    Guests
+                                </div>
+                                <div class="guestPopup">
+                                    <div class="top">
+                                        <div class="wrapper">
+                                            <div class="js-guest-filter">
+                                                <button type="button" class="guest-button decrease">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                                <span class="guest">0</span>
+                                                <button type="button" class="guest-button increase">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                         
+    
+                        <div class="popup-price-range">
+                            <div class="popup-check-box-label-title font-14 font-semibold">
+                                Price range
+                            </div>
+                            <div class="popup-check-box-label-sub-title font-12">
+                                Select an average nightly price
+                            </div>
+                            <div class="price-slider js-price-slider">
+                                <input value="0" min="245" max="122527" step="1" id="js-min-price-slider" oninput="filterScript.filterCheckListener(this);" onchange="filterScript.filterCheckListener(this);" type="range">
+                                <input value="122527" min="245" max="122527" step="1" id="js-max-price-slider" oninput="filterScript.filterCheckListener(this);" onchange="filterScript.filterCheckListener(this);" type="range">
+                            </div>
+                            <div class="popup-min-max-price d-flex justify-content-center align-item-center js-price-input">
+                                <div class="popup-min-price cursor-pointer">
+                                    <label class="popup-min-price-top">Min price</label>
+                                    <span class="currency-text-box">
+                                                    <span class="currency-icon" id="js-min-currency">৳</span>
+                                                    <input class="popup-min-price-bottom" type="number" id="js-min-price" value="" oninput="filterScript.filterCheckListener(this);" min="245" max="122527">
+                                                </span>
+                                </div>
+                                -
+                                <div class="popup-max-price cursor-pointer">
+                                    <label class="popup-min-price-top" id="js-max-price-label">Max price(+)</label>
+                                    <span class="currency-text-box">
+                                                    <span class="currency-icon" id="js-max-currency">৳</span>
+                                                    <input class="popup-min-price-bottom" type="number" id="js-max-price" value="" oninput="filterScript.filterCheckListener(this);" min="245">
+                                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup-amenities">
+                            <div class="popup-check-box-label-title font-14 font-semibold">
+                                Amenities
+                            </div>
+                            <div class="popup-check-box-label-sub-title font-12">
+                                Choose the amenities that are most important
+                            </div>
+    
+                            <div class="popup-amenities-checkbox d-flex" id="js-dynamic-amenities-filter"><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Air Conditioner">Air Conditioner</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-1" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Balcony/terrace">Balcony/terrace</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-2" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Bedding/linens">Bedding/linens</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-3" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Breakfast">Breakfast</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-4" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Child Friendly">Child Friendly</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-5" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Hot Tub">Hot Tub</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-6" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Internet/Wifi">Internet/Wifi</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-7" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Kitchen">Kitchen</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-8" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Laundry">Laundry</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-9" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Parking">Parking</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-10" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Pool">Pool</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-12" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Smoking">Smoking</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-13" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="TV">TV</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-14" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="View">View</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-15" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Wheelchair Accessible">Wheelchair Accessible</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-16" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Private Beach">Private Beach</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-18" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Ocean view">Ocean view</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-19" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Oceanfront">Oceanfront</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-20" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Lake view">Lake view</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-21" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label></div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="filter-pop-up-container">
+                    <div class="popup-buttons d-flex align-item-center cursor-pointer">
+                        <button class="popup-clear-btn cursor-pointer font-12" id="js-clear-filter" disabled="">Clear</button>
+                        <div class="search-btn-area">
+                            <button class="popup-submit-btn font-18 font-semibold cursor-pointer" id="js-apply-filter">
+                                <span id="js-filter-select-text" class="title">Search</span>
+                                <span id="js-filter-btn-count" class="properties"></span>
+                            </button>
+                            <div class="absolute info-icon hidden" id="js-property-info-tooltip">
+                                <div class="tooltip">
+                                    <svg class="icon">
+                                        <use xlink:href="#info"></use>
+                                    </svg>
+                                    <span class="tooltiptext" id="js-tooltip-text"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <svg style="display: none;">
+        <symbol id="close" viewBox="0 0 10 10">
+            <line x1="1" y1="1" x2="9" y2="9" stroke="white" stroke-width="1"/>
+            <line x1="9" y1="1" x2="1" y2="9" stroke="white" stroke-width="1"/>
+        </symbol>
+    </svg>
+
     <script src="/static/js/script.js"></script>  
     <script src="/static/js/filter-sort.js"></script>  
 </body>
