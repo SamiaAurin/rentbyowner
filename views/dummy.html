@@ -340,9 +340,9 @@
     </div> 
     -->
     
-    
+    <!-- Filter Modal Starts -->
     <div class="filter-modal-popup" id="js-filter-modal" style="display: none;">
-        <div class="modal-overlay" id="js-filter-modal-overlay"></div>
+        <div class="modal-overlay"></div>
         <div class="modal-container">
             <div class="modal-header">
                 &nbsp;
@@ -357,24 +357,24 @@
                             </div>
                         </div>
                         <div class="modal-subtitle">Type of property</div>
-                        <div class="popup-check-box">
+                        <div class="modal-check-box">
                             <div class="row">
                                 <div class="col-xs-9 col-sm-9 col-md-9" style="position: relative;">
                                     <div class="icon-left">
                                         <img class="pet-marker" src="https://static.rentbyowner.com/release/28.0.6/static/images/paw.svg" alt="petfirendly" loading="lazy" width="23" height="23">
                                     </div>
                                     <div class="checkbox-wrapper">
-                                        <div class="popup-check-box-label-title">
+                                        <div class="modal-check-box-label-title">
                                             Pet-friendly only
                                             <a href="https://www.petfriendly.io/" target="_blank" class="js-pet-site-link"> (Learn More) </a>
                                         </div>
-                                        <div class="popup-check-box-label-sub-title">
+                                        <div class="modal-check-box-label-sub-title">
                                             Show only pet-friendly properties
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <label class="popup-single-check-box relative visible cursor-pointer font-22">
+                                    <label class="modal-single-check-box">
                                         <input class="js-pet-friendly" type="checkbox" id="amenity-11" onclick="filterScript.filterCheckListener(this);">
                                         <span class="checkmark">&nbsp;</span>
                                     </label>
@@ -387,30 +387,30 @@
                                         <i class="fas fa-leaf"></i>
                                     </div>
                                     <div class="checkbox-wrapper">
-                                        <div class="popup-check-box-label-title">
+                                        <div class="modal-check-box-label-title">
                                             Eco-friendly only
                                             <a href="https://www.onedegreeleft.com" target="_blank"> (Learn More) </a>
                                         </div>
-                                        <div class="popup-check-box-label-sub-title">
+                                        <div class="modal-check-box-label-sub-title">
                                             Show only eco-friendly properties
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <label class="popup-single-check-box">
-                                        <input class="absolute cursor-pointer" type="checkbox" id="js-eco-friendly" onclick="filterScript.filterCheckListener(this);">
-                                        <span class="checkmark absolute">&nbsp;</span>
+                                    <label class="modal-single-check-box">
+                                        <input type="checkbox" id="js-eco-friendly">
+                                        <span class="checkmark">&nbsp;</span>
                                     </label>
                                 </div>
                             </div>
                         </div>
     
-                        
+                        <!-- check in out div starts -->
                         <div class="select-check-in-out">
-                            <div class="popup-check-box-label-title">
+                            <div class="modal-check-box-label-title" style="font-weight: 600;">
                                 Select a date
                             </div>
-                            <div class="popup-check-box-label-sub-title">
+                            <div class="modal-check-box-label-sub-title">
                                 When do you want to travel?
                             </div>
                             <div class="check-in-out-all" id="js-filter-dates">
@@ -427,93 +427,181 @@
                             </div>
                         </div>
                         
+                        <!-- Guest div starts -->
                         <div class="guest-filter">
                             <div class="guest-filter-container">
-                                <div class="popup-check-box-label-title">
+                                <div class="modal-check-box-label-title" style="font-weight: 600;">
                                     Guests
                                 </div>
-                                <div class="guestPopup">
-                                    <div class="top">
-                                        <div class="wrapper">
-                                            <div class="js-guest-filter">
-                                                <button type="button" class="guest-button decrease">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                                <span class="guest">0</span>
-                                                <button type="button" class="guest-button increase">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                <div class="guest-count">
+                                    <div class="guest-filter-btns">
+                                        <button type="button" class="guest-button decrease">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <span class="guest">0</span>
+                                        <button type="button" class="guest-button increase">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Guest div ends -->
                         
-                        
-                        
-                         
-    
-                        <div class="popup-price-range">
-                            <div class="popup-check-box-label-title font-14 font-semibold">
+                        <!-- Price Range div starts -->
+                        <div class="modal-price-range">
+                            <div class="modal-check-box-label-title" style="font-weight: 600;">
                                 Price range
                             </div>
-                            <div class="popup-check-box-label-sub-title font-12">
+                            <div class="modal-check-box-label-sub-title">
                                 Select an average nightly price
                             </div>
-                            <div class="price-slider js-price-slider">
-                                <input value="0" min="245" max="122527" step="1" id="js-min-price-slider" oninput="filterScript.filterCheckListener(this);" onchange="filterScript.filterCheckListener(this);" type="range">
-                                <input value="122527" min="245" max="122527" step="1" id="js-max-price-slider" oninput="filterScript.filterCheckListener(this);" onchange="filterScript.filterCheckListener(this);" type="range">
+                            <div class="modal-slider js-price-slider">
+                                <input class="slider-range" value="0" min="245" max="122527" step="1" id="js-min-price-slider" type="range">
+                                <input class="slider-range" value="122527" min="245" max="122527" step="1" id="js-max-price-slider" type="range">
                             </div>
-                            <div class="popup-min-max-price d-flex justify-content-center align-item-center js-price-input">
-                                <div class="popup-min-price cursor-pointer">
-                                    <label class="popup-min-price-top">Min price</label>
+                            <div class="modal-min-max-price js-price-input">
+                                <div class="modal-min-price">
+                                    <label class="modal-min-price-top">Min price</label>
                                     <span class="currency-text-box">
                                                     <span class="currency-icon" id="js-min-currency">৳</span>
-                                                    <input class="popup-min-price-bottom" type="number" id="js-min-price" value="" oninput="filterScript.filterCheckListener(this);" min="245" max="122527">
-                                                </span>
+                                                    <input class="modal-min-price-bottom" type="number" id="js-min-price" value="" 
+                                                       min="245" max="122527">
+                                    </span>
                                 </div>
                                 -
-                                <div class="popup-max-price cursor-pointer">
-                                    <label class="popup-min-price-top" id="js-max-price-label">Max price(+)</label>
+
+                                <div class="modal-max-price">
+                                    <label class="modal-min-price-top" id="js-max-price-label">Max price(+)</label>
                                     <span class="currency-text-box">
                                                     <span class="currency-icon" id="js-max-currency">৳</span>
-                                                    <input class="popup-min-price-bottom" type="number" id="js-max-price" value="" oninput="filterScript.filterCheckListener(this);" min="245">
-                                                </span>
+                                                    <input class="modal-min-price-bottom" type="number" id="js-max-price" value="" 
+                                                       min="245">
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="popup-amenities">
-                            <div class="popup-check-box-label-title font-14 font-semibold">
+                        <!-- Price Range div ends -->
+
+                        <!-- Amenities  div starts -->
+                        <div class="modal-amenities">
+                            <div class="modal-check-box-label-title" style="font-weight: 600;">
                                 Amenities
                             </div>
-                            <div class="popup-check-box-label-sub-title font-12">
+                            <div class="modal-check-box-label-sub-title">
                                 Choose the amenities that are most important
                             </div>
     
-                            <div class="popup-amenities-checkbox d-flex" id="js-dynamic-amenities-filter"><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Air Conditioner">Air Conditioner</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-1" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Balcony/terrace">Balcony/terrace</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-2" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Bedding/linens">Bedding/linens</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-3" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Breakfast">Breakfast</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-4" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Child Friendly">Child Friendly</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-5" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Hot Tub">Hot Tub</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-6" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Internet/Wifi">Internet/Wifi</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-7" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Kitchen">Kitchen</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-8" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Laundry">Laundry</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-9" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Parking">Parking</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-10" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Pool">Pool</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-12" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Smoking">Smoking</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-13" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="TV">TV</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-14" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="View">View</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-15" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Wheelchair Accessible">Wheelchair Accessible</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-16" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Private Beach">Private Beach</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-18" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Ocean view">Ocean view</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-19" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Oceanfront">Oceanfront</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-20" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label><label class="popup-single-check-box relative visible cursor-pointer font-22">                <span class="inline-block ellipsis" title="Lake view">Lake view</span>                <input class="absolute cursor-pointer" type="checkbox" id="amenity-21" onclick="filterScript.filterCheckListener(this);">                <span class="checkmark absolute inline-block"></span>            </label></div>
-    
+                            <div class="modal-amenities-checkbox" id="js-dynamic-amenities-filter">
+                                <label class="modal-single-check-box">                
+                                    <span title="Air Conditioner">Air Conditioner</span>                
+                                    <input type="checkbox" id="amenity-1">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="Balcony/terrace">Balcony/terrace</span>                
+                                    <input type="checkbox" id="amenity-2">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="Bedding/linens">Bedding/linens</span>                
+                                    <input type="checkbox" id="amenity-3">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Breakfast">Breakfast</span>                
+                                    <input type="checkbox" id="amenity-4">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="Child Friendly">Child Friendly</span>                
+                                    <input  type="checkbox" id="amenity-5">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Hot Tub">Hot Tub</span>                
+                                    <input  type="checkbox" id="amenity-6">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Internet/Wifi">Internet/Wifi</span>                
+                                    <input  type="checkbox" id="amenity-7">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Kitchen">Kitchen</span>               
+                                    <input type="checkbox" id="amenity-8">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Laundry">Laundry</span>                
+                                    <input type="checkbox" id="amenity-9">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="Parking">Parking</span>                
+                                    <input type="checkbox" id="amenity-10">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Pool">Pool</span>                
+                                    <input  type="checkbox" id="amenity-12">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Smoking">Smoking</span>                
+                                    <input type="checkbox" id="amenity-13">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="TV">TV</span>                
+                                    <input type="checkbox" id="amenity-14">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="View">View</span>                
+                                    <input type="checkbox" id="amenity-15">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Wheelchair Accessible">Wheelchair Accessible</span>                
+                                    <input type="checkbox" id="amenity-16">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Private Beach">Private Beach</span>                
+                                    <input type="checkbox" id="amenity-18">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span  title="Ocean view">Ocean view</span>                
+                                    <input  type="checkbox" id="amenity-19">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="Oceanfront">Oceanfront</span>                
+                                    <input type="checkbox" id="amenity-20">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                                <label class="modal-single-check-box">                
+                                    <span title="Lake view">Lake view</span>                
+                                    <input type="checkbox" id="amenity-21">                
+                                    <span class="checkmark"></span>            
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- Modal Footer with clear and search buttons -->
+            <div class="filter-modal-footer">
                 <div class="filter-pop-up-container">
-                    <div class="popup-buttons d-flex align-item-center cursor-pointer">
-                        <button class="popup-clear-btn cursor-pointer font-12" id="js-clear-filter" disabled="">Clear</button>
+                    <div class="modal-buttons">
+                        <button class="modal-clear-btn" id="js-clear-filter" disabled="">Clear</button>
                         <div class="search-btn-area">
-                            <button class="popup-submit-btn font-18 font-semibold cursor-pointer" id="js-apply-filter">
+                            <button class="modal-submit-btn" id="js-apply-filter">
                                 <span id="js-filter-select-text" class="title">Search</span>
-                                <span id="js-filter-btn-count" class="properties"></span>
                             </button>
-                            <div class="absolute info-icon hidden" id="js-property-info-tooltip">
-                                <div class="tooltip">
-                                    <svg class="icon">
-                                        <use xlink:href="#info"></use>
-                                    </svg>
-                                    <span class="tooltiptext" id="js-tooltip-text"></span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <br>
@@ -521,7 +609,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Filter Modal Ends -->
 
     
     <svg style="display: none;">
