@@ -555,9 +555,9 @@
         </symbol>
     </svg>
 
-    <script src="/static/js/fetchProperties.js"></script>  
-    <script src="/static/js/main.js"></script>
+    <script src="/static/js/fetchProperties.js"></script>     
     <script src="/static/js/modal.js"></script>
     <script src="/static/js/sort.js"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
