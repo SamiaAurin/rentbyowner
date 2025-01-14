@@ -42,35 +42,33 @@
                <div class="filter-btns">
                    <div class="filters">
                      <button id="filter-date-btn">Dates</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                     <span class="filter-close-btn" id="js-date-range-close" style="display:none;">
                         <svg class="icon">
                             <use xlink:href="#close"></use>
                         </svg>
-                    </span>
+                     </span>
                    </div>
                    <div class="filters">
                      <button id="filter-price-btn">Price</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                     <span class="filter-close-btn" id="js-price-range-close" style="display:none;">
                         <svg class="icon">
                             <use xlink:href="#close"></use>
                         </svg>
-                    </span>
+                     </span>
                    </div>
                    <div class="filters">
                      <button id="filter-guests-btn">Guests</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                     <span class="filter-close-btn" id="js-guest-count-close" style="display:none;">
                         <svg class="icon">
                             <use xlink:href="#close"></use>
                         </svg>
-                    </span>
+                     </span>
                    </div>
                    <div class="filters">
                      <button id="filter-more-btn">More Filters</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
-                        <svg class="icon">
-                            <use xlink:href="#close"></use>
-                        </svg>
-                    </span>
+                     <span class="filter-close-btn" id="js-more-filterbtn-count" style="display:none;">
+                        
+                     </span>
                    </div>
                </div>
             </div>
@@ -557,7 +555,9 @@
         </symbol>
     </svg>
 
-    <script src="/static/js/script.js"></script>  
-    <script src="/static/js/filter-sort.js"></script>   
+    <script src="/static/js/fetchProperties.js"></script>  
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/modal.js"></script>
+    <script src="/static/js/sort.js"></script>
 </body>
 </html>

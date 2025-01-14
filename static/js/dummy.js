@@ -1,12 +1,62 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    const sortBtn = document.getElementById('js-sort');
+    const selectOptions = document.getElementById('js-select-ul');
+
+    sortBtn.addEventListener('click', function() {
+        // Toggle display property
+        if (selectOptions.style.display === 'block') {
+            selectOptions.style.display = 'none';
+        } else {
+            selectOptions.style.display = 'block';
+        }
+
+        // Toggle arrow indicator
+        sortBtn.classList.toggle('active');
+    });
+
+    const dateBtn = document.getElementById('filter-date-btn');
+    const priceBtn = document.getElementById('filter-price-btn');
+    const guestsBtn = document.getElementById('filter-guests-btn');
+    const moreFiltersBtn = document.getElementById('filter-more-btn');
+    const filterModal = document.getElementById('js-filter-modal');
+    const closeBtns = document.getElementById('js-filter-close');
+     
+    // Function to display the modal
+    function showModal() {
+        filterModal.style.display = 'block';
+    }
+
+    // Attach click event listeners to each button
+    dateBtn.addEventListener('click', showModal);
+    priceBtn.addEventListener('click', showModal);
+    guestsBtn.addEventListener('click', showModal);
+    moreFiltersBtn.addEventListener('click', showModal);
+
+    // Function to hide the modal
+    function hideModal() {
+        filterModal.style.display = 'none';
+    }
+
+    // Attach click event listeners to close buttons
+    closeBtns.addEventListener('click', hideModal);
+
     const searchBtn = document.getElementById('js-btn-search');
     const searchBox = document.getElementById('search-box');
     const searchInput = document.getElementById('search-input');
     const searchSubmit = document.getElementById('search-submit');
     const closeBtn = document.getElementById('js-btn-close');
     const tilesContainer = document.getElementById('js-property-tiles');
-    
-    // Shimmer effect when someone search for a place
+    const guestCountSpan = document.querySelector('.guest-filter .guest');
+    const guestDecreaseBtn = document.querySelector('.guest-button.decrease');
+    const guestIncreaseBtn = document.querySelector('.guest-button.increase');
+    const modalSearchSubmit = document.getElementById('js-apply-filter');
+    const clearFilterBtn = document.getElementById('js-clear-filter');
+    const filterGuestsBtn = document.getElementById('filter-guests-btn');
+    const guestCountCloseBtn = document.getElementById('js-guest-count-close');
+    let guestCount = 0;
+
+    // Shimmer effect when someone searches for a place
     function showShimmerEffect() {
         tilesContainer.innerHTML = '';
         for (let i = 0; i < 6; i++) {
@@ -51,8 +101,28 @@ document.addEventListener("DOMContentLoaded", function() {
             showShimmerEffect();
 
             // Fetch and display properties
-            fetchAndDisplayProperties(searchQuery);
+            fetchAndDisplayProperties(searchQuery, null);
         }
+    }
+
+    function performGuestSearch() {
+        const searchQuery = searchInput.value;
+        const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&pax=${guestCount}&order=1`;
+        history.pushState(null, '', newUrl);
+        
+        // Show shimmer effect
+        showShimmerEffect();
+
+        // Fetch and display properties with specific guest count
+        fetchAndDisplayProperties(searchQuery, guestCount);
+    }
+    
+    function updateGuestDisplay() {
+        guestCountSpan.textContent = guestCount;
+        filterGuestsBtn.textContent = `${guestCount} Guests`;
+        clearFilterBtn.disabled = guestCount === 0;
+        clearFilterBtn.style.color = guestCount > 0 ? '#103076' : 'grey';
+        guestCountCloseBtn.style.display = guestCount > 0 ? 'inline' : 'none';
     }
 
     searchBtn.addEventListener('click', function() {
@@ -73,14 +143,42 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    
-    async function fetchAndDisplayProperties(searchQuery) {
+    guestDecreaseBtn.addEventListener('click', function() {
+        if (guestCount > 0) {
+            guestCount--;
+            updateGuestDisplay();
+        }
+    });
+
+    guestIncreaseBtn.addEventListener('click', function() {
+        guestCount++;
+        updateGuestDisplay();
+    });
+
+    modalSearchSubmit.addEventListener('click', function() {
+        hideModal();
+        performGuestSearch();
+    });
+
+    clearFilterBtn.addEventListener('click', function() {
+        guestCount = 0;
+        updateGuestDisplay();
+    });
+    async function fetchAndDisplayProperties(searchQuery, guestCount) {
         try {
-            const response = await fetch(`/properties?search=${encodeURIComponent(searchQuery)}&order=1`);
+            let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=1`;
+            
+
+            const response = await fetch(url);
             const data = await response.json();
             
             if (data.success) {
-                const properties = data.properties;
+                let properties = data.properties;
+
+                // Filter properties based on guest count if provided
+                if (guestCount !== null) {
+                    properties = properties.filter(property => property.Occupancy >= guestCount);
+                }
 
                 // Clear the container
                 tilesContainer.innerHTML = '';
@@ -209,6 +307,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const initialSearchQuery = urlParams.get('search');
     
     if (initialSearchQuery) {
-        fetchAndDisplayProperties(initialSearchQuery);
+        fetchAndDisplayProperties(initialSearchQuery, null);
     }
 });

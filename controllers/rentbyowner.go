@@ -24,6 +24,7 @@ type Property struct {
     PropertyName  string    `json:"PropertyName"`
     PropertyType  string    `json:"PropertyType"`
     ReviewScore   float64   `json:"ReviewScore"`
+    Occupancy     int     `json:"Occupancy"`
     Categories    [2]string `json:"Categories"`
     PartnerURL    string    `json:"PartnerURL"`
     StarRating    int       `json:"StarRating"`
@@ -204,7 +205,10 @@ func (c *PropertyController) GetProperties() {
         if val, ok := property["Counts"].(map[string]interface{})["Reviews"].(float64); ok {
             reviews = int(val)
         }
-
+        occupancy := 0
+        if val, ok := property["Counts"].(map[string]interface{})["Occupancy"].(float64); ok {
+            occupancy = int(val)
+        }
         featureImage := ""
         if val, ok := property["FeatureImage"].(string); ok {
             featureImage = val
@@ -268,6 +272,7 @@ func (c *PropertyController) GetProperties() {
             PropertyName: propertyName,
             PropertyType: propertyType,
             ReviewScore:  reviewScore,
+            Occupancy:    occupancy,  
             Categories:   categories,
             PartnerURL:   partnerURL,
             StarRating:   starRating,
