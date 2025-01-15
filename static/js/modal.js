@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
    
 
     let guestCount = 0;
-    const searchQuery = searchInput.value;
+    
 
     // Function to display the modal
     function showModal() {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     function performGuestSearch() {
-        
+        const searchQuery = searchInput.value;
         const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&pax=${guestCount}&order=1`;
         history.pushState(null, '', newUrl);
         
@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     guestCountCloseBtn.addEventListener('click', function() {
+        const searchQuery = searchInput.value;
+        console.log(`guestCountCloseBtn: searchQuery = ${searchQuery}`);
         guestCount = 0;
         updateGuestDisplay();
         showShimmerEffect();

@@ -6,10 +6,13 @@ const searchQuery = searchInput.value;
 async function fetchAndDisplayProperties(searchQuery, guestCount) {
     try {
         let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=1`;
+        console.log(`fetchAndDisplayProperties: Fetching URL: ${url}`);
         
         const response = await fetch(url);
         const data = await response.json();
         
+        console.log(`Response for fetchAndDisplayProperties: `, data);
+
         if (data.success) {
             let properties = data.properties;
 
@@ -31,11 +34,15 @@ async function fetchAndDisplayProperties(searchQuery, guestCount) {
     }
 }
 
-async function fetchAndDisplayPropertiesWithSort(sortValue) {
+async function fetchAndDisplayPropertiesWithSort(searchQuery, sortValue) {
     try {
         let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=1`;
+        console.log(`fetchAndDisplayPropertiesWithSort: Fetching URL: ${url}`);
+        
         const response = await fetch(url);
         const data = await response.json();
+
+        console.log(`Response for fetchAndDisplayPropertiesWithSort: `, data);
 
         if (data.success) {
             let properties = data.properties;
@@ -57,6 +64,7 @@ async function fetchAndDisplayPropertiesWithSort(sortValue) {
 }
 
 function sortProperties(properties, sortValue) {
+    console.log(`Sorting properties with sort value: ${sortValue}`);
     switch (sortValue) {
         case '1':
             // Most Popular (default order)
@@ -83,6 +91,7 @@ function sortProperties(properties, sortValue) {
 }
 
 function displayProperties(properties) {
+    console.log(`Displaying ${properties.length} properties`);
     properties.forEach(property => {
         const categories = property.Categories;
         const partnerURL = property.PartnerURL;

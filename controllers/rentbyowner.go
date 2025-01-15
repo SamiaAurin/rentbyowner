@@ -161,7 +161,7 @@ func (c *PropertyController) GetProperties() {
         strings.Join(itemIDs, ","),
         countryCode,
     )
-    fmt.Printf("Third API: %s\n", thirdAPIURL)
+    //fmt.Printf("Third API: %s\n", thirdAPIURL)
 
     req3, _ := http.NewRequest("GET", thirdAPIURL, nil)
     // Use the same headers for consistency
