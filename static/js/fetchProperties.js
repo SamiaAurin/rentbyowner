@@ -3,9 +3,10 @@ const tilesContainer = document.getElementById('js-property-tiles');
 const searchInput = document.getElementById('search-input');
 const searchQuery = searchInput.value;
 
-async function fetchAndDisplayProperties(searchQuery, guestCount) {
+async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRange = null) {
     try {
         let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=1`;
+        
         console.log(`fetchAndDisplayProperties: Fetching URL: ${url}`);
         
         const response = await fetch(url);
@@ -20,7 +21,12 @@ async function fetchAndDisplayProperties(searchQuery, guestCount) {
             if (guestCount !== null) {
                 properties = properties.filter(property => property.Occupancy >= guestCount);
             }
-
+            
+            // Filter properties based on price range if provided
+            if (priceRange !== null) {
+                properties = properties.filter(property => property.Price >= priceRange.min && property.Price <= priceRange.max);
+            }
+            
             // Clear the container
             tilesContainer.innerHTML = '';
 

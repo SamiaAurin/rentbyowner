@@ -391,27 +391,24 @@
                             <div class="modal-check-box-label-sub-title">
                                 Select an average nightly price
                             </div>
-                            <div class="modal-slider js-price-slider">
-                                <input class="slider-range" value="0" min="245" max="122527" step="1" id="js-min-price-slider" type="range">
-                                <input class="slider-range" value="122527" min="245" max="122527" step="1" id="js-max-price-slider" type="range">
+                            <div class="modal-slider" id="js-price-slider">
+                                <input class="slider-range" value="0" min="24" max="1000" step="1" id="js-min-price-slider" type="range">
+                                <input class="slider-range" value="1000" min="24" max="1000" step="1" id="js-max-price-slider" type="range">
                             </div>
                             <div class="modal-min-max-price js-price-input">
                                 <div class="modal-min-price">
                                     <label class="modal-min-price-top">Min price</label>
                                     <span class="currency-text-box">
-                                                    <span class="currency-icon" id="js-min-currency">৳</span>
-                                                    <input class="modal-min-price-bottom" type="number" id="js-min-price" value="" 
-                                                       min="245" max="122527">
+                                        <span class="currency-icon" id="js-min-currency">৳</span>
+                                        <input class="modal-min-price-bottom" type="number" id="js-min-price" value="" min="24" max="1000">
                                     </span>
                                 </div>
                                 -
-
                                 <div class="modal-max-price">
                                     <label class="modal-min-price-top" id="js-max-price-label">Max price(+)</label>
                                     <span class="currency-text-box">
-                                                    <span class="currency-icon" id="js-max-currency">৳</span>
-                                                    <input class="modal-min-price-bottom" type="number" id="js-max-price" value="" 
-                                                       min="245">
+                                        <span class="currency-icon" id="js-max-currency">৳</span>
+                                        <input class="modal-min-price-bottom" type="number" id="js-max-price" value="" min="24">
                                     </span>
                                 </div>
                             </div>
