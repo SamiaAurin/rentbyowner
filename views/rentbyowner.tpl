@@ -310,8 +310,8 @@
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <label class="modal-single-check-box">
-                                        <input class="js-pet-friendly" type="checkbox" id="amenity-11" onclick="filterScript.filterCheckListener(this);">
-                                        <span class="checkmark">&nbsp;</span>
+                                        <input class="js-pet-friendly" type="checkbox" id="amenity-20" value="Pet Friendly">
+                                        <span class="checkmark"></span>
                                     </label>
                                 </div>
                             </div>
@@ -333,8 +333,8 @@
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <label class="modal-single-check-box">
-                                        <input type="checkbox" id="js-eco-friendly">
-                                        <span class="checkmark">&nbsp;</span>
+                                        <input type="checkbox" id="amenity-21" value="Eco-friendly">
+                                        <span class="checkmark"></span>
                                     </label>
                                 </div>
                             </div>
@@ -427,97 +427,97 @@
                             <div class="modal-amenities-checkbox" id="js-dynamic-amenities-filter">
                                 <label class="modal-single-check-box">                
                                     <span title="Air Conditioner">Air Conditioner</span>                
-                                    <input type="checkbox" id="amenity-1">                
+                                    <input type="checkbox" id="amenity-1" value="Air Conditioner">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="Balcony/terrace">Balcony/terrace</span>                
-                                    <input type="checkbox" id="amenity-2">                
+                                    <input type="checkbox" id="amenity-2" value="Balcony/terrace">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="Bedding/linens">Bedding/linens</span>                
-                                    <input type="checkbox" id="amenity-3">                
+                                    <input type="checkbox" id="amenity-3" value="Bedding/linens">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Breakfast">Breakfast</span>                
-                                    <input type="checkbox" id="amenity-4">                
+                                    <span title="Breakfast">Breakfast</span>                
+                                    <input type="checkbox" id="amenity-4" value="Breakfast">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="Child Friendly">Child Friendly</span>                
-                                    <input  type="checkbox" id="amenity-5">                
+                                    <input type="checkbox" id="amenity-5" value="Child Friendly">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Hot Tub">Hot Tub</span>                
-                                    <input  type="checkbox" id="amenity-6">                
+                                    <span title="Hot Tub">Hot Tub</span>                
+                                    <input type="checkbox" id="amenity-6" value="Hot Tub">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Internet/Wifi">Internet/Wifi</span>                
-                                    <input  type="checkbox" id="amenity-7">                
+                                    <span title="Internet/Wifi">Internet/Wifi</span>                
+                                    <input type="checkbox" id="amenity-7" value="Internet/Wifi">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Kitchen">Kitchen</span>               
-                                    <input type="checkbox" id="amenity-8">                
+                                    <span title="Kitchen">Kitchen</span>               
+                                    <input type="checkbox" id="amenity-8" value="Kitchen">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Laundry">Laundry</span>                
-                                    <input type="checkbox" id="amenity-9">                
+                                    <span title="Laundry">Laundry</span>                
+                                    <input type="checkbox" id="amenity-9" value="Laundry">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="Parking">Parking</span>                
-                                    <input type="checkbox" id="amenity-10">                
+                                    <input type="checkbox" id="amenity-10" value="Parking">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Pool">Pool</span>                
-                                    <input  type="checkbox" id="amenity-12">                
+                                    <span title="Pool">Pool</span>                
+                                    <input type="checkbox" id="amenity-11" value="Pool">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Smoking">Smoking</span>                
-                                    <input type="checkbox" id="amenity-13">                
+                                    <span title="Smoking">Smoking</span>                
+                                    <input type="checkbox" id="amenity-12" value="Smoking">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="TV">TV</span>                
-                                    <input type="checkbox" id="amenity-14">                
+                                    <input type="checkbox" id="amenity-13" value="TV">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="View">View</span>                
-                                    <input type="checkbox" id="amenity-15">                
+                                    <input type="checkbox" id="amenity-14" value="View">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Wheelchair Accessible">Wheelchair Accessible</span>                
-                                    <input type="checkbox" id="amenity-16">                
+                                    <span title="Wheelchair Accessible">Wheelchair Accessible</span>                
+                                    <input type="checkbox" id="amenity-15" value="Wheelchair Accessible">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Private Beach">Private Beach</span>                
-                                    <input type="checkbox" id="amenity-18">                
+                                    <span title="Private Beach">Private Beach</span>                
+                                    <input type="checkbox" id="amenity-16" value="Private Beach">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
-                                    <span  title="Ocean view">Ocean view</span>                
-                                    <input  type="checkbox" id="amenity-19">                
+                                    <span title="Ocean view">Ocean view</span>                
+                                    <input type="checkbox" id="amenity-17" value="Ocean view">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="Oceanfront">Oceanfront</span>                
-                                    <input type="checkbox" id="amenity-20">                
+                                    <input type="checkbox" id="amenity-18" value="Oceanfront">                
                                     <span class="checkmark"></span>            
                                 </label>
                                 <label class="modal-single-check-box">                
                                     <span title="Lake view">Lake view</span>                
-                                    <input type="checkbox" id="amenity-21">                
+                                    <input type="checkbox" id="amenity-19" value="Lake view">                
                                     <span class="checkmark"></span>            
                                 </label>
                             </div>

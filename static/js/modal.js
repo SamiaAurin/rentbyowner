@@ -151,6 +151,30 @@ document.addEventListener("DOMContentLoaded", function() {
         guestCount = 0;
         updateGuestDisplay();
     });
+    
+    // More Filters and Amenities
+    function getSelectedAmenities() {
+        const selectedAmenities = [];
+        const checkboxes = document.querySelectorAll('.modal-single-check-box input[type="checkbox"]:checked');
+        checkboxes.forEach(checkbox => {
+            selectedAmenities.push(checkbox.value);
+        });
+        return selectedAmenities;
+    }
+
+    function performAmenitiesSearch() {
+        const searchQuery = searchInput.value;
+        const selectedAmenities = getSelectedAmenities();
+        console.log("Selected Amenities: ", selectedAmenities); // Debugging
+        const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&amenities=${selectedAmenities.join(',')}&order=1`;
+        history.pushState(null, '', newUrl);
+        
+        // Show shimmer effect
+        showShimmerEffect();
+        
+        // Fetch and display properties with specific amenities
+        fetchAndDisplayProperties(searchQuery, null, null, selectedAmenities);
+    }
 
 
     // Attach click event listeners to each filter buttons
@@ -171,6 +195,11 @@ document.addEventListener("DOMContentLoaded", function() {
         if (minPriceInput.value !== minPriceSlider.min || maxPriceInput.value !== maxPriceSlider.max) {
             performPriceRangeSearch();
         }
+
+        if (getSelectedAmenities().length > 0) {
+            performAmenitiesSearch();
+        }
+        
     });
   
 });

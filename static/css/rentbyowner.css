@@ -360,6 +360,26 @@
     border: 2px solid #c9d2d985;
     border-radius: 5px;
 }
+/* CSS after Marked as Checked */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.modal-single-check-box input:checked ~ .checkmark:after {
+    display: block;
+}
+.modal-single-check-box .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #00cd92;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
 .select-check-in-out {
     padding: 10px 0;
     border-bottom: 1px solid #dfeaf0;

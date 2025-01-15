@@ -3,7 +3,7 @@ const tilesContainer = document.getElementById('js-property-tiles');
 const searchInput = document.getElementById('search-input');
 const searchQuery = searchInput.value;
 
-async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRange = null) {
+async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRange = null, amenities = []) {
     try {
         let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=1`;
         
@@ -27,8 +27,20 @@ async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRa
                 properties = properties.filter(property => property.Price >= priceRange.min && property.Price <= priceRange.max);
             }
             
+            // Filter properties based on amenities if provided
+            if (amenities.length > 0) {
+                properties = properties.filter(property => 
+                    amenities.every(amenity => property.Amenities.includes(amenity))
+                );
+            }
+
             // Clear the container
             tilesContainer.innerHTML = '';
+
+            // Limit amenities to three for each property
+            properties.forEach(property => {
+                property.Amenities = property.Amenities.slice(0, 3);
+            });
 
             // Display properties
             displayProperties(properties);

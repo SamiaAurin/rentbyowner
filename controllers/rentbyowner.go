@@ -188,16 +188,10 @@ func (c *PropertyController) GetProperties() {
     for _, item := range propertyDetails["Items"].([]interface{}) {
         property := item.(map[string]interface{})["Property"].(map[string]interface{})
 
-        // Select any 3 amenities
+        // amenities
         amenities := []string{}
-        count := 0
         for _, amenity := range property["Amenities"].(map[string]interface{}) {
-            if count < 3 {
-                amenities = append(amenities, amenity.(string))
-                count++
-            } else {
-                break
-            }
+            amenities = append(amenities, amenity.(string))
         }
 
         // Safely extract values with type assertions and checks
