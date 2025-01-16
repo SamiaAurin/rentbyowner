@@ -52,6 +52,28 @@ async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRa
     }
 }
 
+
+async function fetchPropertiesWithDate(startDate, endDate) {
+    let url = `/properties?search=${encodeURIComponent(searchQuery)}&dateStart=${startDate}&dateEnd=${endDate}&order=1`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        console.log('API Response:', data);
+
+        if (data.success) {
+            // Process and display the fetched properties
+            displayProperties(data.properties);
+        } else {
+            console.error('Error fetching property data:', data.error);
+        }
+    } catch (error) {
+        console.error('Error fetching property data:', error);
+    }
+}
+
+// Sorting Function
 async function fetchAndDisplayPropertiesWithSort(searchQuery, sortValue) {
     try {
         let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=1`;

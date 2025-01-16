@@ -608,7 +608,29 @@ button:disabled {
     cursor: pointer;
 }
 /* Filter and Sort buttons CSS ENDS*/
-/* Shimmer Effect */
+
+.calendar button {
+    cursor: pointer;
+}
+.calendar .continue-btn {
+    width: 175px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #00cd92;
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2); 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px 20px; 
+}
+.continue-btn span:first-of-type {
+    font-weight: bold;
+}
+
+/* Shimmer Effect Starts */
 .line {
     width: 100%;
     height: 20px;
@@ -642,6 +664,7 @@ button:disabled {
         transform: translateX(200%);
     }
 }
+/* Shimmer Effect Ends */
 
 /* Property Tiles CSS*/
 .property-tiles-container{

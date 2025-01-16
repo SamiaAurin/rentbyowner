@@ -27,8 +27,71 @@ document.addEventListener("DOMContentLoaded", function() {
     function hideModal() {
         filterModal.style.display = 'none';
     }
+    
+    //////////////////////  Date and Calendar ///////////////////////////
+    const calendar = document.getElementById('modal-calendar');
+    // Variables to store selected dates
+    let selectedStartDate = null;
+    let selectedEndDate = null;
 
+    function showCalendar() {
+        calendar.style.display = 'inline';
+        var input = document.getElementById('input-id');
+        const datepicker = new HotelDatepicker(input, {
+            i18n: {
+                selected: 'Your stay:',
+                night: 'Night',
+                nights: 'Nights',
+                button: 'Close',
+                clearButton: 'Clear',
+                submitButton: 'Submit',
+                'checkin-disabled': 'Check-in disabled',
+                'checkout-disabled': 'Check-out disabled',
+                'day-names-short': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                'day-names': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                'month-names-short': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                'error-more': 'Date range should not be more than 1 night',
+                'error-more-plural': 'Date range should not be more than %d nights',
+                'error-less': 'Date range should not be less than 1 night',
+                'error-less-plural': 'Date range should not be less than %d nights',
+                'info-more': 'Please select a date range of at least 1 night',
+                'info-more-plural': 'Please select a date range of at least %d nights',
+                'info-range': 'Please select a date range between %d and %d nights',
+                'info-range-equal': 'Please select a date range of %d nights',
+                'info-default': 'Please select a date range',
+                'aria-application': 'Calendar',
+                'aria-selected-checkin': 'Selected as check-in date, %s',
+                'aria-selected-checkout': 'Selected as check-out date, %s',
+                'aria-selected': 'Selected, %s',
+                'aria-disabled': 'Not available, %s',
+                'aria-choose-checkin': 'Choose %s as your check-in date',
+                'aria-choose-checkout': 'Choose %s as your check-out date',
+                'aria-prev-month': 'Move backward to switch to the previous month',
+                'aria-next-month': 'Move forward to switch to the next month',
+                'aria-close-button': 'Close the datepicker',
+                'aria-clear-button': 'Clear the selected dates',
+                'aria-submit-button': 'Submit the form'
+            },
+            onSelect: function(start, end) {
+                selectedStartDate = start;
+                selectedEndDate = end;
+                console.log('Start date selected:', start);
+                console.log('End date selected:', end);
+            }
+        });
 
+        // Ensure the event listener is set up after the datepicker initialization
+        document.getElementById('night-btn').addEventListener('click', function() {
+            if (selectedStartDate && selectedEndDate) {
+                fetchPropertiesWithDate(selectedStartDate, selectedEndDate);
+            } else {
+                console.error('Please select a date range first.');
+            }
+        });
+    }
+
+    
     /////////////////////       Price Range   ///////////////////////////
 
     const minPriceSlider = document.getElementById('js-min-price-slider');
@@ -245,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // Attach click event listeners to each filter buttons
-    dateBtn.addEventListener('click', showModal);
+    dateBtn.addEventListener('click', showCalendar);
     priceBtn.addEventListener('click', showModal);
     guestsBtn.addEventListener('click', showModal);
     moreFiltersBtn.addEventListener('click', showModal);

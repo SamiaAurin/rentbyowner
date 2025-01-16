@@ -40,7 +40,9 @@ func (c *PropertyController) GetProperties() {
     if search == "" {
         search = "Dhaka"
     }
-    
+    dateStart := c.GetString("dateStart")
+    dateEnd := c.GetString("dateEnd")
+
     // First API Call
     firstAPIURL := fmt.Sprintf("http://beta-mda.refine.lefttravel.com/v1/location?keyword=%s", search)
     req1, _ := http.NewRequest("GET", firstAPIURL, nil)
@@ -79,13 +81,22 @@ func (c *PropertyController) GetProperties() {
     // Format LocationSlug for second API
     formattedSlug := strings.ReplaceAll(locationSlug, "/", ":")
     //fmt.Printf("Formatted Slug: %s\n", formattedSlug)
-
-    // Second API Call with required headers
-    secondAPIURL := fmt.Sprintf(
-        "http://beta-mda.refine.lefttravel.com/v1/category/details/%s?order=1&page=1&limit=100&feeds=11-12-24&items=1&locations=BD&device=desktop",
-        formattedSlug,
-    )
     
+    // Second API Call with required headers
+    var secondAPIURL string
+    if dateStart == "" || dateEnd == "" {
+        // Second API Call without date parameters
+        secondAPIURL = fmt.Sprintf(
+            "http://beta-mda.refine.lefttravel.com/v1/category/details/%s?order=1&page=1&limit=100&feeds=11-12-24&items=1&locations=BD&device=desktop",
+            formattedSlug,
+        )
+    } else {
+        // Second API Call with date parameters
+        secondAPIURL = fmt.Sprintf(
+            "http://beta-mda.refine.lefttravel.com/v1/category/details/%s?order=1&page=1&limit=100&feeds=11-12-24&items=1&dateStart=%s&dateEnd=%s&locations=BD&device=desktop",
+            formattedSlug, dateStart, dateEnd,
+        )
+    }
     req2, _ := http.NewRequest("GET", secondAPIURL, nil)
     
     // Add the specific required headers

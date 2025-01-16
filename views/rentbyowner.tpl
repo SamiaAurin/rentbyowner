@@ -7,8 +7,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/rentbyowner.css" rel="stylesheet">
+
     <!-- Font Awesome Icon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Hotel Date Picker Calendar-->
+    <link href="
+    https://cdn.jsdelivr.net/npm/hotel-datepicker@4.11.2/dist/css/hotel-datepicker.min.css
+    " rel="stylesheet">
 
     <title>RentByOwner</title>
 </head>
@@ -541,6 +547,34 @@
         </div>
     </div>
     <!-- Filter Modal Ends -->
+    
+    <!-- Calendar -->
+    <div class="calendar"id="modal-calendar" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">When do you want to travel?</h2>
+                <div class="modal-close-btn" id="js-filter-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <!-- Calendar Container -->
+            <div class="modal-body">
+                <input id="input-id" type="text" class="input-calendar" />
+            </div>
+            
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5 col-md-5">
+                        <button id="night-btn" class="continue-btn">
+                            <span>Continue</span>
+                            <span id="night" class="night-text">1 Night</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- SVG for Cross Icon -->
@@ -551,7 +585,9 @@
         </symbol>
     </svg>
 
-    <script src="/static/js/fetchProperties.js"></script>     
+    <script src="/static/js/fetchProperties.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/fecha@4.2.3/lib/fecha.umd.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.11.2/dist/js/hotel-datepicker.min.js"></script>  
     <script src="/static/js/modal.js"></script>
     <script src="/static/js/sort.js"></script>
     <script src="/static/js/main.js"></script>
