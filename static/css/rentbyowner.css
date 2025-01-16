@@ -116,6 +116,7 @@
     color: #fff;
 }
 
+/* Sort Button CSS */
 .sort{
     display: flex;
     justify-content: flex-end;
@@ -207,12 +208,8 @@
 
 
 /**/
-.filter-btns .filters .filter-close-btn {
-    position: absolute;
-    background-color: #93a0a0;
-    cursor: pointer;
-}
 .filter-btns .filters span {
+    position: absolute;
     right: 4px;
     top: -8px;
     color: #fff;
@@ -223,8 +220,14 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    line-height: 18px;
+    line-height: 20px;
 }
+.filter-btns .filters .filter-close-btn {
+    position: absolute;
+    background-color: #93a0a0;
+    cursor: pointer;
+}
+
 .filter-btns .filters .filter-close-btn svg {
     height: 8px;
     width: 8px;  
@@ -458,7 +461,7 @@
     padding: 10px 0;
     border-bottom: 1px solid #dfeaf0;
 }
-.modal-slider {
+.modal-price-slider {
     width: 300px;
     margin: 0 auto;
     text-align: center;
@@ -466,28 +469,29 @@
     height: 2em;
     
 }
-.modal-slider input[type=range] {
+.modal-price-slider input[type=range] {
     position: absolute;
     left: 0;
     bottom: 0;
     height: 4px;
     width: 100%;
+    pointer-events: none;
 }
 .slider-range{
     -webkit-appearance: none;
     appearance: none;
     background: #00cd92; 
-    outline: none; 
-   
+    outline: none;
 }
 .slider-range::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Remove default styling */
-    appearance: none; 
+    -webkit-appearance: none; 
+    appearance: none;
     width: 20px; 
     height: 20px; 
     background: #00cd92; 
     cursor: pointer; 
     border-radius: 50%; 
+    pointer-events: auto;
 }
 .modal-min-max-price {
     display: flex;
@@ -508,6 +512,7 @@
     color: #757575;
 
     label{
+        display: block;
         font-size: .75rem;
     }
 }

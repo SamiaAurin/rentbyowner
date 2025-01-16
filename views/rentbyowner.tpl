@@ -66,8 +66,7 @@
                    </div>
                    <div class="filters">
                      <button id="filter-more-btn">More Filters</button>
-                     <span class="filter-close-btn" id="js-more-filterbtn-count" style="display:none;">
-                        
+                     <span class="more-filterbtn-count" id="js-more-filterbtn-count" style="display:none;">
                      </span>
                    </div>
                </div>
@@ -391,7 +390,7 @@
                             <div class="modal-check-box-label-sub-title">
                                 Select an average nightly price
                             </div>
-                            <div class="modal-slider" id="js-price-slider">
+                            <div class="modal-price-slider" id="js-price-slider">
                                 <input class="slider-range" value="0" min="24" max="1000" step="1" id="js-min-price-slider" type="range">
                                 <input class="slider-range" value="1000" min="24" max="1000" step="1" id="js-max-price-slider" type="range">
                             </div>

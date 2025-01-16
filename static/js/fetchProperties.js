@@ -30,7 +30,7 @@ async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRa
             // Filter properties based on amenities if provided
             if (amenities.length > 0) {
                 properties = properties.filter(property => 
-                    amenities.every(amenity => property.Amenities.includes(amenity))
+                    amenities.some(amenity => property.Amenities.includes(amenity))
                 );
             }
 
@@ -67,6 +67,11 @@ async function fetchAndDisplayPropertiesWithSort(searchQuery, sortValue) {
 
             // Sort properties based on the selected option
             sortProperties(properties, sortValue);
+            
+            // Limit amenities to three for each property
+            properties.forEach(property => {
+                property.Amenities = property.Amenities.slice(0, 3);
+            });
 
             // Clear the container
             tilesContainer.innerHTML = '';
