@@ -29,68 +29,140 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     //////////////////////  Date and Calendar ///////////////////////////
+
     const calendar = document.getElementById('modal-calendar');
-    // Variables to store selected dates
+    const calendarClose = document.getElementById('js-calendar-close');
     let selectedStartDate = null;
     let selectedEndDate = null;
+    let datepicker = null; 
 
-    function showCalendar() {
-        calendar.style.display = 'inline';
-        var input = document.getElementById('input-id');
-        const datepicker = new HotelDatepicker(input, {
-            i18n: {
-                selected: 'Your stay:',
-                night: 'Night',
-                nights: 'Nights',
-                button: 'Close',
-                clearButton: 'Clear',
-                submitButton: 'Submit',
-                'checkin-disabled': 'Check-in disabled',
-                'checkout-disabled': 'Check-out disabled',
-                'day-names-short': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                'day-names': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                'month-names-short': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                'error-more': 'Date range should not be more than 1 night',
-                'error-more-plural': 'Date range should not be more than %d nights',
-                'error-less': 'Date range should not be less than 1 night',
-                'error-less-plural': 'Date range should not be less than %d nights',
-                'info-more': 'Please select a date range of at least 1 night',
-                'info-more-plural': 'Please select a date range of at least %d nights',
-                'info-range': 'Please select a date range between %d and %d nights',
-                'info-range-equal': 'Please select a date range of %d nights',
-                'info-default': 'Please select a date range',
-                'aria-application': 'Calendar',
-                'aria-selected-checkin': 'Selected as check-in date, %s',
-                'aria-selected-checkout': 'Selected as check-out date, %s',
-                'aria-selected': 'Selected, %s',
-                'aria-disabled': 'Not available, %s',
-                'aria-choose-checkin': 'Choose %s as your check-in date',
-                'aria-choose-checkout': 'Choose %s as your check-out date',
-                'aria-prev-month': 'Move backward to switch to the previous month',
-                'aria-next-month': 'Move forward to switch to the next month',
-                'aria-close-button': 'Close the datepicker',
-                'aria-clear-button': 'Clear the selected dates',
-                'aria-submit-button': 'Submit the form'
-            },
-            onSelect: function(start, end) {
-                selectedStartDate = start;
-                selectedEndDate = end;
-                console.log('Start date selected:', start);
-                console.log('End date selected:', end);
-            }
-        });
 
-        // Ensure the event listener is set up after the datepicker initialization
-        document.getElementById('night-btn').addEventListener('click', function() {
-            if (selectedStartDate && selectedEndDate) {
-                fetchPropertiesWithDate(selectedStartDate, selectedEndDate);
-            } else {
-                console.error('Please select a date range first.');
-            }
-        });
+    function initializeDatepicker() {
+        
+        const input = document.getElementById('input-id');
+        const calendarContainer = document.getElementById('calendar-container');
+
+        if (!input) {
+            console.error('Input element not found');
+            return;
+        }
+        
+        if (!datepicker) {
+            datepicker = new HotelDatepicker(input, {
+                container: calendarContainer,
+                inline: true,
+                format: 'YYYY-MM-DD',
+                startOfWeek: 'monday',
+                disabledDates: [],
+                submitButton: false,
+                enableCheckout: true,
+                preventContainerClose: true,
+                autoClose: false,
+                showTopbar: true,
+                moveBothMonths: true,
+                minNights: 1,
+                maxNights: 30,
+                selectForward: true,
+                setValue: function(s, s1, s2) {
+                    input.value = s;
+                    selectedStartDate = s1;
+                    selectedEndDate = s2;
+                    console.log('Values set:', { s, s1, s2 });
+                    updateNightCount(s1, s2);
+                },
+                beforeShowDay: function(date) {
+                    return [true, ''];
+                },
+                onOpenDatepicker: function() {
+                    console.log('Datepicker opened');
+                },
+                onCloseDatepicker: function() {
+                    console.log('Datepicker closed');
+                }
+
+            });
+        }
+
     }
 
+    function updateNightCount(start, end) {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+        const nights = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+        
+        const nightElement = document.getElementById('night');
+        if (nightElement) {
+            nightElement.textContent = `${nights} ${nights === 1 ? 'Night' : 'Nights'}`;
+        }
+    }
+    
+    const filterDateBtn = document.getElementById('filter-date-btn');
+    const dateCloseBtn = document.getElementById('js-date-range-close');
+   
+    dateCloseBtn.addEventListener('click', function() {
+
+        filterDateBtn.textContent = 'Dates';
+        dateCloseBtn.style.display = 'none';
+
+        selectedStartDate = null;
+        selectedEndDate = null;
+        updateFilterCount();
+    });
+    
+    function updateFilterDateButton(startDate, endDate) {
+        const formattedStartDate = fecha.format(new Date(startDate), 'MMM D');
+        const formattedEndDate = fecha.format(new Date(endDate), 'MMM D');
+        filterDateBtn.textContent = `${formattedStartDate} - ${formattedEndDate}`;
+        dateCloseBtn.style.display = 'inline';  
+    }
+
+    function setupEventListeners() {
+        // Close button event
+        if (calendarClose) {
+            calendarClose.addEventListener('click', hideCalendar);
+        }
+        
+        // Continue button event
+        const nightBtn = document.getElementById('night-btn');
+        if (nightBtn) {
+            nightBtn.addEventListener('click', function() {
+
+                const searchInput = document.getElementById('search-input');
+                const searchQuery = searchInput.value;
+
+                console.log('Current dates:', selectedStartDate, selectedEndDate);
+                // Show shimmer effect
+                showShimmerEffect();
+                if (selectedStartDate && selectedEndDate) {
+
+                    const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&dateStart=${selectedStartDate}&dateEnd=${selectedEndDate}&order=1`;
+                    history.pushState(null, '', newUrl);
+
+                    fetchPropertiesWithDate(searchQuery, selectedStartDate, selectedEndDate);
+                    updateFilterDateButton(selectedStartDate, selectedEndDate);
+                    hideCalendar();
+                    // Update the filter count after performing searches
+                    updateFilterCount();
+                } else {
+                    alert('Please select both check-in and check-out dates');
+                }
+            });
+        }
+    }
+
+    function showCalendar() {
+        if (calendar) {
+            calendar.style.display = 'inline';
+            initializeDatepicker();
+            setupEventListeners();
+        }
+    }
+
+    function hideCalendar() {
+        if (calendar) {
+            calendar.style.display = 'none';
+        }
+    }
     
     /////////////////////       Price Range   ///////////////////////////
 
@@ -287,7 +359,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function updateFilterCount() {
         const checkboxes = document.querySelectorAll('.modal-single-check-box input[type="checkbox"]:checked');
         let selectedFilterCount = checkboxes.length;
-
+        
+        // Check if a date range is selected
+        if (selectedStartDate && selectedEndDate) {
+            selectedFilterCount++;
+        }
         // Check if guest count filter is applied
         if (guestCount > 0) {
             selectedFilterCount++;

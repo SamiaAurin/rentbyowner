@@ -53,9 +53,10 @@ async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRa
 }
 
 
-async function fetchPropertiesWithDate(startDate, endDate) {
+async function fetchPropertiesWithDate(searchQuery, startDate, endDate) {
     let url = `/properties?search=${encodeURIComponent(searchQuery)}&dateStart=${startDate}&dateEnd=${endDate}&order=1`;
-    
+    console.log('URL:', url);
+
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -63,6 +64,16 @@ async function fetchPropertiesWithDate(startDate, endDate) {
         console.log('API Response:', data);
 
         if (data.success) {
+            let properties = data.properties;
+
+            // Clear the container
+            tilesContainer.innerHTML = '';
+
+            // Limit amenities to three for each property
+            properties.forEach(property => {
+                property.Amenities = property.Amenities.slice(0, 3);
+            });
+
             // Process and display the fetched properties
             displayProperties(data.properties);
         } else {

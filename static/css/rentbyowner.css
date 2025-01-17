@@ -269,7 +269,7 @@
     color: #0b1833;
 }
 
-.filter-pop-up-container .modal-close-btn {
+.filter-pop-up-container .modal-close-btn{
     position: absolute;
     right: -5px;
     top: 5px;
@@ -282,6 +282,7 @@
     border-radius: 50%;
     
 }
+
 .modal-title {
     width: 100%;
     font-size: 20px;
@@ -608,7 +609,15 @@ button:disabled {
     cursor: pointer;
 }
 /* Filter and Sort buttons CSS ENDS*/
-
+/* Calendar CSS Starts */
+.calendar .modal-close-btn {
+    position: absolute;
+    right: -1px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
 .calendar button {
     cursor: pointer;
 }
@@ -621,15 +630,93 @@ button:disabled {
     color: #fff;
     font-size: 1rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2); 
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     margin: 10px 20px; 
 }
-.continue-btn span:first-of-type {
-    font-weight: bold;
+.continue-btn span{
+    display: block;
+}
+.continue-btn span:first-child {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 17px;
+}
+.continue-btn span:last-child {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 17px;
+}
+#calendar-container {
+    position: relative;
+    margin: 20px;
+}
+/* Calendar CSS Ends */
+/* Custom styles for the datepicker */
+.datepicker {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        background-color: #fff;
+        border-radius: 5px;
+        -webkit-box-shadow: 8px 8px 40px 5px rgba(0, 0, 0, 0.08);
+        box-shadow: 8px 8px 40px 5px rgba(0, 0, 0, 0.08);
+        color: #484c55;
+        font-family: "Helvetica", "Helvetica Neue", "Arial", sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+}
+.datepicker__info--selected,
+.datepicker__info--error,
+.datepicker__info--help,
+.datepicker__info--feedback {
+    display: none !important;
 }
 
+.datepicker__month-button:after {
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+    text-indent: 0;
+    content: ">";
+    width: 12px;
+    height: 12px;
+}
+.datepicker__month-day--today {
+    background-color: #003970;
+    color: #fff;
+}
+.datepicker__day {
+    color: #333; /* Custom text color for days */
+    border-radius: 50%; /* Circular day cells */
+    width: 32px; /* Custom width for day cells */
+    height: 32px; /* Custom height for day cells */
+    line-height: 32px; /* Vertically center text */
+    margin: 2px; /* Custom margin */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.datepicker__day--selected {
+    background-color: #007bff; /* Custom background color for selected day */
+    color: #fff; /* Custom text color for selected day */
+}
+
+.datepicker__day:hover {
+    background-color: #007bff; /* Custom background color on hover */
+    color: #fff; /* Custom text color on hover */
+}
+
+.datepicker__day--disabled {
+    color: #999; /* Custom text color for disabled days */
+    cursor: not-allowed; /* Custom cursor for disabled days */
+}
+/* Hide the input but keep it functional */
+.input-calendar {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
 /* Shimmer Effect Starts */
 .line {
     width: 100%;

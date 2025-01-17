@@ -554,13 +554,14 @@
         <div class="modal-container">
             <div class="modal-header">
                 <h2 class="modal-title">When do you want to travel?</h2>
-                <div class="modal-close-btn" id="js-filter-close">
+                <div class="modal-close-btn" id="js-calendar-close">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
             </div>
             <!-- Calendar Container -->
             <div class="modal-body">
-                <input id="input-id" type="text" class="input-calendar" />
+                <input id="input-id" type="text" class="input-calendar" value=""/>
+                <div id="calendar-container"></div>
             </div>
             
             <div class="modal-footer">
@@ -585,11 +586,13 @@
         </symbol>
     </svg>
 
-    <script src="/static/js/fetchProperties.js"></script> 
+    
     <script src="https://cdn.jsdelivr.net/npm/fecha@4.2.3/lib/fecha.umd.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.11.2/dist/js/hotel-datepicker.min.js"></script>  
+    <script src="/static/js/fetchProperties.js"></script> 
     <script src="/static/js/modal.js"></script>
     <script src="/static/js/sort.js"></script>
     <script src="/static/js/main.js"></script>
+
 </body>
 </html>
