@@ -353,15 +353,15 @@
                             <div class="modal-check-box-label-sub-title">
                                 When do you want to travel?
                             </div>
-                            <div class="check-in-out-all" id="js-filter-dates">
-                                <div class="single-check-in-out">
+                            <div class="check-in-out-all">
+                                <div class="single-check-in-out" id="js-checkin">
                                     <span> Check-in</span>
-                                    <input type="text" placeholder="" id="js-checkin" readonly="" value="">
+                                    <input type="text" placeholder=""  readonly="" value="">
                                     <i class="fa-solid fa-angle-down"></i>
                                 </div>
-                                <div class="single-check-in-out">
+                                <div class="single-check-in-out" id="js-checkout">
                                     <span> Check-out</span>
-                                    <input type="text" placeholder="" id="js-checkout" readonly="" value="">
+                                    <input type="text" placeholder=""  readonly="" value="">
                                     <i class="fa-solid fa-angle-down"></i>
                                 </div>
                             </div>

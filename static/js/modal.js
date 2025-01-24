@@ -126,23 +126,62 @@ document.addEventListener("DOMContentLoaded", function() {
         const nightBtn = document.getElementById('night-btn');
         if (nightBtn) {
             nightBtn.addEventListener('click', function() {
-
+                
                 const searchInput = document.getElementById('search-input');
                 const searchQuery = searchInput.value;
+                const checkinInput = document.querySelector('#js-checkin input');
+                const checkoutInput = document.querySelector('#js-checkout input');
+                
 
                 console.log('Current dates:', selectedStartDate, selectedEndDate);
                 // Show shimmer effect
                 showShimmerEffect();
                 if (selectedStartDate && selectedEndDate) {
+                    // Check if the check-in and check-out inputs were clicked from the modal
+                    const checkinClicked = checkinInput && checkinInput.value.trim() !== "";
+                    const checkoutClicked = checkoutInput && checkoutInput.value.trim() !== "";
 
-                    const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&dateStart=${selectedStartDate}&dateEnd=${selectedEndDate}&order=1`;
-                    history.pushState(null, '', newUrl);
+                    if (checkinClicked && checkoutClicked) {
+                        // Update the value of the input fields with the selected dates
+                        const formattedStartDate = fecha.format(new Date(selectedStartDate), 'MMM D');
+                        const formattedEndDate = fecha.format(new Date(selectedEndDate), 'MMM D');
+        
+                        checkinInput.value = formattedStartDate;
+                        checkoutInput.value = formattedEndDate;
+    
+                        console.log('Check-in and Check-out clicked before nightBtn');
+                        // Enable the clear filter button
+                        clearFilterBtn.disabled = false;
+                        clearFilterBtn.style.color = '#103076';
 
-                    fetchPropertiesWithDate(searchQuery, selectedStartDate, selectedEndDate);
-                    updateFilterDateButton(selectedStartDate, selectedEndDate);
-                    hideCalendar();
-                    // Update the filter count after performing searches
-                    updateFilterCount();
+                        showModal();
+
+                        // If modal search submit button is clicked
+                        modalSearchSubmit.addEventListener('click', function () {
+                            // Update the URL and fetch properties with dates
+                            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&dateStart=${selectedStartDate}&dateEnd=${selectedEndDate}&order=1`;
+                            history.pushState(null, '', newUrl);
+
+                            fetchPropertiesWithDate(searchQuery, selectedStartDate, selectedEndDate);
+                            updateFilterDateButton(selectedStartDate, selectedEndDate);
+                            hideCalendar();
+
+                            // Update the filter count after performing searches
+                            updateFilterCount();
+                        });
+
+                    } else{
+                        const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&dateStart=${selectedStartDate}&dateEnd=${selectedEndDate}&order=1`;
+                        history.pushState(null, '', newUrl);
+
+                        fetchPropertiesWithDate(searchQuery, selectedStartDate, selectedEndDate);
+                        updateFilterDateButton(selectedStartDate, selectedEndDate);
+                        hideCalendar();
+                        // Update the filter count after performing searches
+                        updateFilterCount();
+                    }
+
+                    
                 } else {
                     alert('Please select both check-in and check-out dates');
                 }
@@ -151,6 +190,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function showCalendar() {
+
+        if(showModal){
+            hideModal();
+        }
+
+
         if (calendar) {
             calendar.style.display = 'inline';
             initializeDatepicker();
@@ -412,6 +457,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Hide the "more filter" button span
         filterCountSpan.style.display = 'none';
+        
+        checkinInput.value = null;
+        checkoutInput.value = null;
 
         // Update filter count
         updateFilterCount();
@@ -432,8 +480,20 @@ document.addEventListener("DOMContentLoaded", function() {
             performAmenitiesSearch();
         }
 
+        
+
         // Update the filter count after performing searches
         updateFilterCount();
     });
+
+
+    const checkinDiv = document.getElementById('js-checkin');
+    const checkoutDiv = document.getElementById('js-checkout');
+    checkinDiv.addEventListener('click', showCalendar);
+    checkoutDiv.addEventListener('click', showCalendar);
+
+    
+    
+    
   
 });
