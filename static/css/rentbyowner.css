@@ -671,7 +671,6 @@ button:disabled {
 /* Calendar CSS Ends */
 /* Custom styles for the datepicker */
 .datepicker {
-        -webkit-box-sizing: border-box;
         box-sizing: border-box;
         overflow: hidden;
         position: absolute;
@@ -679,10 +678,8 @@ button:disabled {
         z-index: 1;
         background-color: #fff;
         border-radius: 5px;
-        -webkit-box-shadow: 8px 8px 40px 5px rgba(0, 0, 0, 0.08);
         box-shadow: 8px 8px 40px 5px rgba(0, 0, 0, 0.08);
         color: #484c55;
-        font-family: "Helvetica", "Helvetica Neue", "Arial", sans-serif;
         font-size: 14px;
         line-height: 14px;
 }
@@ -693,34 +690,59 @@ button:disabled {
     display: none !important;
 }
 
-.datepicker__month-button:after {
-    background-repeat: no-repeat;
-    background-position: center;
-    float: left;
-    text-indent: 0;
-    content: ">";
-    width: 12px;
-    height: 12px;
+.datepicker__month-button--prev:after {
+    background-image: none !important;
+    content: '<' !important; 
+}
+.datepicker__month-button--next:after {
+    background-image: none !important;
+    content: '>' !important; 
+}
+
+.calendar .datepicker__month-button {
+    background-color: #103076;
+    color: #fff !important;
+    height: 26px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 .datepicker__month-day--today {
-    background-color: #003970;
-    color: #fff;
+    box-shadow: inset 0px 0px 0px 1px rgba(16, 48, 115, 1) !important;
+    background-color: #FFFFFF !important;
+    color: #1a1a1a !important; 
+    border-radius: 5px !important;
+}
+
+.datepicker__month-day--today.datepickermonth-day--selected {
+    color: #fff !important; 
+    background-color: #103076 !important; 
+    box-shadow: inset 0px 0px 0px 1px rgba(16, 48, 115, 1) !important;
 }
 .datepicker__day {
-    color: #333; /* Custom text color for days */
-    border-radius: 50%; /* Circular day cells */
-    width: 32px; /* Custom width for day cells */
-    height: 32px; /* Custom height for day cells */
-    line-height: 32px; /* Vertically center text */
-    margin: 2px; /* Custom margin */
-    transition: background-color 0.3s; /* Smooth background color transition */
+    color: #1a1a1a; 
+    border-radius: 50%; 
+    width: 32px; 
+    height: 32px; 
+    line-height: 32px; 
+    margin: 2px; 
+    transition: background-color 0.3s; 
 }
 
-.datepicker__day--selected {
-    background-color: #007bff; /* Custom background color for selected day */
-    color: #fff; /* Custom text color for selected day */
+.datepicker__month-day--first-day-selected, 
+.datepicker__month-day--last-day-selected {
+    background-color: #003970 !important;
+    color: #fff;
 }
-
+.datepicker__month-day--first-day-selected{
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+    
+}
+.datepicker__month-day--last-day-selected{
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important; 
+}
 .datepicker__day:hover {
     background-color: #007bff; /* Custom background color on hover */
     color: #fff; /* Custom text color on hover */

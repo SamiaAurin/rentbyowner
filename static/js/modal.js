@@ -1,7 +1,5 @@
 // modal.js: JS for Filter Buttons' and Modal
-
-    // Search Box Input
-    //const searchInput = document.getElementById('search-input');
+    
 
     // Filter Buttons
     const dateBtn = document.getElementById('filter-date-btn');
@@ -27,6 +25,11 @@
     }
     
     //////////////////////  Date and Calendar ///////////////////////////
+
+    const checkinDiv = document.getElementById('js-checkin');
+    const checkoutDiv = document.getElementById('js-checkout');
+    checkinDiv.addEventListener('click', showCalendar);
+    checkoutDiv.addEventListener('click', showCalendar);
 
     const calendar = document.getElementById('modal-calendar');
     const calendarClose = document.getElementById('js-calendar-close');
@@ -60,16 +63,17 @@
                 moveBothMonths: true,
                 minNights: 1,
                 maxNights: 30,
-                selectForward: true,
+                selectForward: false,
                 setValue: function(s, s1, s2) {
                     input.value = s;
                     selectedStartDate = s1;
                     selectedEndDate = s2;
                     console.log('Values set:', { s, s1, s2 });
                     updateNightCount(s1, s2);
+                    
                 },
                 beforeShowDay: function(date) {
-                    return [true, 'datepicker__month-day--valid'];
+                    return [true, ''];
                 },
                 onOpenDatepicker: function() {
                     console.log('Datepicker opened');
@@ -118,7 +122,10 @@
 
     const filterDateBtn = document.getElementById('filter-date-btn');
     const dateCloseBtn = document.getElementById('js-date-range-close');
-   
+    //the check-in and check-out input fields
+    const checkinInput = document.querySelector('#js-checkin input');
+    const checkoutInput = document.querySelector('#js-checkout input');
+
     dateCloseBtn.addEventListener('click', function() {
 
         filterDateBtn.textContent = 'Dates';
@@ -134,13 +141,13 @@
         const formattedEndDate = fecha.format(new Date(endDate), 'MMM D');
         filterDateBtn.textContent = `${formattedStartDate} - ${formattedEndDate}`;
         dateCloseBtn.style.display = 'inline';  
-
-        // Update the check-in and check-out input fields
-        const checkinInput = document.querySelector('#js-checkin input');
-        const checkoutInput = document.querySelector('#js-checkout input');
         
         checkinInput.value = formattedStartDate;
         checkoutInput.value = formattedEndDate;
+
+        // Enable the clear filter button
+        clearFilterBtn.disabled = false;
+        clearFilterBtn.style.color = '#103076';
         
     }
     
@@ -286,8 +293,6 @@
         const minPrice = parseInt(document.getElementById('js-min-price').value);
         const maxPrice = parseInt(document.getElementById('js-max-price').value);
 
-        
-
         priceBtn.innerHTML = `৳${minPrice} - ৳${maxPrice}`;
         priceRangeCloseBtn.style.display = 'inline' ;
         // Define the price range
@@ -418,7 +423,7 @@
         let selectedFilterCount = checkboxes.length;
         
         // Check if a date range is selected
-        if (selectedStartDate && selectedEndDate) {
+        if (filterDateBtn.textContent !== `Dates`) {
             selectedFilterCount++;
         }
         // Check if guest count filter is applied
@@ -469,9 +474,13 @@
 
         // Hide the "more filter" button span
         filterCountSpan.style.display = 'none';
-        
+
+        filterDateBtn.textContent = `Dates`;
+        dateCloseBtn.style.display = 'none';
         checkinInput.value = null;
         checkoutInput.value = null;
+        selectedStartDate = null;
+        selectedEndDate = null;
 
         // Update filter count
         updateFilterCount();
@@ -502,8 +511,5 @@
     });
 
 
-    const checkinDiv = document.getElementById('js-checkin');
-    const checkoutDiv = document.getElementById('js-checkout');
-    checkinDiv.addEventListener('click', showCalendar);
-    checkoutDiv.addEventListener('click', showCalendar);
+    
 

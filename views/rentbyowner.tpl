@@ -40,6 +40,7 @@
             <i class="fas fa-times"></i>
         </span>
     </div>
+    
     <!-- Breadcrumbs Section 
     <div class="container breadcrumb">
         <div class="breadcrumb-content">
