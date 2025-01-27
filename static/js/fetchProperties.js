@@ -1,5 +1,6 @@
 // fetchProperties.js
 const tilesContainer = document.getElementById('js-property-tiles');
+//const breadcrumbContainer = document.getElementById('js-breadcrumb');
 const searchInput = document.getElementById('search-input');
 const searchQuery = searchInput.value;
 
@@ -35,6 +36,7 @@ async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRa
             }
 
             // Clear the container
+            //breadcrumbContainer.innerHTML = '';
             tilesContainer.innerHTML = '';
 
             // Limit amenities to three for each property
@@ -44,6 +46,7 @@ async function fetchAndDisplayProperties(searchQuery, guestCount = null, priceRa
 
             // Display properties
             displayProperties(properties);
+            //displayBreadcrumbs(properties[0].Display, searchQuery);
         } else {
             console.error('Error fetching property data:', data.error);
         }
@@ -87,7 +90,7 @@ async function fetchPropertiesWithDate(searchQuery, startDate, endDate) {
 // Sorting Function
 async function fetchAndDisplayPropertiesWithSort(searchQuery, sortValue) {
     try {
-        let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=1`;
+        let url = `/properties?search=${encodeURIComponent(searchQuery)}&order=${sortValue}`;
         console.log(`fetchAndDisplayPropertiesWithSort: Fetching URL: ${url}`);
         
         const response = await fetch(url);
@@ -263,3 +266,34 @@ function addFavoriteIconListeners() {
         });
     });
 }
+
+/*
+function displayBreadcrumbs(displayArray, searchQuery) {
+    // Clear previous breadcrumb content
+    breadcrumbContainer.innerHTML = '';
+
+    // Title text with dynamic search query
+    const titleText = `Vacation Rentals in ${searchQuery} |`;
+
+    // Create a text node for the title
+    const titleNode = document.createTextNode(titleText);
+    breadcrumbContainer.appendChild(titleNode);
+
+    // Generate the breadcrumb links
+    displayArray.forEach((item, index) => {
+        // Create the anchor element
+        const anchor = document.createElement('a');
+        anchor.href = `/all/${item.toLowerCase().replace(/ /g, '-')}`;
+        anchor.textContent = item;
+
+        // Append the anchor to the breadcrumb container
+        breadcrumbContainer.appendChild(anchor);
+
+        // Add a separator if it's not the last item
+        if (index < displayArray.length - 1) {
+            const separator = document.createTextNode(' > ');
+            breadcrumbContainer.appendChild(separator);
+        }
+    });
+}
+*/

@@ -24,8 +24,9 @@ type Property struct {
     PropertyName  string    `json:"PropertyName"`
     PropertyType  string    `json:"PropertyType"`
     ReviewScore   float64   `json:"ReviewScore"`
-    Occupancy     int     `json:"Occupancy"`
+    Occupancy     int       `json:"Occupancy"`
     Categories    [2]string `json:"Categories"`
+    Display       []string  `json:"Display"`
     PartnerURL    string    `json:"PartnerURL"`
     StarRating    int       `json:"StarRating"`
 }
@@ -244,16 +245,28 @@ func (c *PropertyController) GetProperties() {
         if geoInfo, ok := item.(map[string]interface{})["GeoInfo"].(map[string]interface{}); ok {
             if categoriesList, ok := geoInfo["Categories"].([]interface{}); ok {
                 for _, category := range categoriesList {
-                    if display, ok := category.(map[string]interface{})["Display"].([]interface{}); ok {
-                        if len(display) >= 2 {
-                            categories[0] = strings.Title(display[len(display)-1].(string))
-                            categories[1] = strings.Title(display[len(display)-2].(string))
+                    if displayList, ok := category.(map[string]interface{})["Display"].([]interface{}); ok {
+                        if len(displayList) >= 2 {
+                            categories[0] = strings.Title(displayList[len(displayList)-1].(string))
+                            categories[1] = strings.Title(displayList[len(displayList)-2].(string))
                         }
                     }
                 }
             }
         }
-
+    
+        // Extract and transform Display field
+        /*display := []string{}
+        if geoInfo, ok := item.(map[string]interface{})["GeoInfo"].(map[string]interface{}); ok {
+            if displayStr, ok := geoInfo["Display"].(string); ok {
+                display = strings.Split(displayStr, ", ")
+                // Reverse the display array to get the desired order
+                for i, j := 0, len(display)-1; i < j; i, j = i+1, j-1 {
+                    display[i], display[j] = display[j], display[i]
+                }
+            }
+        }
+        */
         // Extract Partner URL
         partnerURL := "null"
         if partner, ok := item.(map[string]interface{})["Partner"].(map[string]interface{}); ok {
@@ -278,7 +291,8 @@ func (c *PropertyController) GetProperties() {
             PropertyType: propertyType,
             ReviewScore:  reviewScore,
             Occupancy:    occupancy,  
-            Categories:   categories,
+            Categories:   categories, 
+            //Display:      display,
             PartnerURL:   partnerURL,
             StarRating:   starRating,
         }

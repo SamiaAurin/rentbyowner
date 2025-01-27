@@ -1,9 +1,7 @@
 // modal.js: JS for Filter Buttons' and Modal
 
-document.addEventListener("DOMContentLoaded", function() {
-
     // Search Box Input
-    const searchInput = document.getElementById('search-input');
+    //const searchInput = document.getElementById('search-input');
 
     // Filter Buttons
     const dateBtn = document.getElementById('filter-date-btn');
@@ -35,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let selectedStartDate = null;
     let selectedEndDate = null;
     let datepicker = null; 
-
+    let isEventListenersAttached = false;
 
     function initializeDatepicker() {
         
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     updateNightCount(s1, s2);
                 },
                 beforeShowDay: function(date) {
-                    return [true, ''];
+                    return [true, 'datepicker__month-day--valid'];
                 },
                 onOpenDatepicker: function() {
                     console.log('Datepicker opened');
@@ -96,6 +94,28 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     
+    function performDateSearch(selectedStartDate, selectedEndDate) {
+        const searchInput = document.getElementById('search-input');
+        const searchQuery = searchInput.value;
+    
+        console.log('Current dates:', selectedStartDate, selectedEndDate);
+        // Show shimmer effect
+        showShimmerEffect();
+    
+        if (selectedStartDate && selectedEndDate) {
+            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&dateStart=${selectedStartDate}&dateEnd=${selectedEndDate}&order=1`;
+            history.pushState(null, '', newUrl);
+    
+            fetchPropertiesWithDate(searchQuery, selectedStartDate, selectedEndDate);
+            updateFilterDateButton(selectedStartDate, selectedEndDate);
+            hideCalendar();
+            // Update the filter count after performing searches
+            updateFilterCount();
+        } else {
+            alert('Please select both check-in and check-out dates');
+        }
+    }
+
     const filterDateBtn = document.getElementById('filter-date-btn');
     const dateCloseBtn = document.getElementById('js-date-range-close');
    
@@ -114,8 +134,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const formattedEndDate = fecha.format(new Date(endDate), 'MMM D');
         filterDateBtn.textContent = `${formattedStartDate} - ${formattedEndDate}`;
         dateCloseBtn.style.display = 'inline';  
-    }
 
+        // Update the check-in and check-out input fields
+        const checkinInput = document.querySelector('#js-checkin input');
+        const checkoutInput = document.querySelector('#js-checkout input');
+        
+        checkinInput.value = formattedStartDate;
+        checkoutInput.value = formattedEndDate;
+        
+    }
+    
     function setupEventListeners() {
         // Close button event
         if (calendarClose) {
@@ -124,69 +152,41 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Continue button event
         const nightBtn = document.getElementById('night-btn');
+        let checkinClicked = false;
+        let checkoutClicked = false;
+
+        // Add event listeners to check-in and check-out buttons
+        const checkinBtn = document.getElementById('js-checkin');
+        const checkoutBtn = document.getElementById('js-checkout');
+
+        if (checkinBtn) {
+            checkinBtn.addEventListener('click', function() {
+                checkinClicked = true;
+            });
+        }
+
+        if (checkoutBtn) {
+            checkoutBtn.addEventListener('click', function() {
+                checkoutClicked = true;
+            });
+        }
+
         if (nightBtn) {
             nightBtn.addEventListener('click', function() {
-                
-                const searchInput = document.getElementById('search-input');
-                const searchQuery = searchInput.value;
-                const checkinInput = document.querySelector('#js-checkin input');
-                const checkoutInput = document.querySelector('#js-checkout input');
-                
-
-                console.log('Current dates:', selectedStartDate, selectedEndDate);
-                // Show shimmer effect
-                showShimmerEffect();
-                if (selectedStartDate && selectedEndDate) {
-                    // Check if the check-in and check-out inputs were clicked from the modal
-                    const checkinClicked = checkinInput && checkinInput.value.trim() !== "";
-                    const checkoutClicked = checkoutInput && checkoutInput.value.trim() !== "";
-
-                    if (checkinClicked && checkoutClicked) {
-                        // Update the value of the input fields with the selected dates
-                        const formattedStartDate = fecha.format(new Date(selectedStartDate), 'MMM D');
-                        const formattedEndDate = fecha.format(new Date(selectedEndDate), 'MMM D');
-        
-                        checkinInput.value = formattedStartDate;
-                        checkoutInput.value = formattedEndDate;
-    
-                        console.log('Check-in and Check-out clicked before nightBtn');
-                        // Enable the clear filter button
-                        clearFilterBtn.disabled = false;
-                        clearFilterBtn.style.color = '#103076';
-
-                        showModal();
-
-                        // If modal search submit button is clicked
-                        modalSearchSubmit.addEventListener('click', function () {
-                            // Update the URL and fetch properties with dates
-                            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&dateStart=${selectedStartDate}&dateEnd=${selectedEndDate}&order=1`;
-                            history.pushState(null, '', newUrl);
-
-                            fetchPropertiesWithDate(searchQuery, selectedStartDate, selectedEndDate);
-                            updateFilterDateButton(selectedStartDate, selectedEndDate);
-                            hideCalendar();
-
-                            // Update the filter count after performing searches
-                            updateFilterCount();
-                        });
-
-                    } else{
-                        const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&dateStart=${selectedStartDate}&dateEnd=${selectedEndDate}&order=1`;
-                        history.pushState(null, '', newUrl);
-
-                        fetchPropertiesWithDate(searchQuery, selectedStartDate, selectedEndDate);
-                        updateFilterDateButton(selectedStartDate, selectedEndDate);
-                        hideCalendar();
-                        // Update the filter count after performing searches
-                        updateFilterCount();
-                    }
-
-                    
+                // Check if either the check-in or check-out button has been clicked
+                if (checkinClicked || checkoutClicked) {
+                    checkinClicked = false;
+                    checkoutClicked = false;
+                    hideCalendar();
+                    updateFilterDateButton(selectedStartDate, selectedEndDate);
+                    showModal();
                 } else {
-                    alert('Please select both check-in and check-out dates');
+                    performDateSearch(selectedStartDate, selectedEndDate);
                 }
             });
         }
+        // Set the flag to true after attaching event listeners
+        isEventListenersAttached = true;
     }
 
     function showCalendar() {
@@ -199,7 +199,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (calendar) {
             calendar.style.display = 'inline';
             initializeDatepicker();
-            setupEventListeners();
+            // Only setup event listeners if they haven't been attached yet
+            if (!isEventListenersAttached) {
+                setupEventListeners();
+            }
         }
     }
 
@@ -289,7 +292,10 @@ document.addEventListener("DOMContentLoaded", function() {
         priceRangeCloseBtn.style.display = 'inline' ;
         // Define the price range
         const priceRange = { min: minPrice, max: maxPrice };
-        const searchQuery = searchInput.value;
+        const searchQuery = localStorage.getItem('searchQuery') || searchInput.value;
+        // Save the search query to local storage in case it's a new one
+        localStorage.setItem('searchQuery', searchQuery);
+        
         const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&amount=${minPrice}-${maxPrice}&order=1`;
         history.pushState(null, '', newUrl);
         // Show shimmer effect
@@ -310,7 +316,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     function performGuestSearch() {
-        const searchQuery = searchInput.value;
+        const searchQuery = localStorage.getItem('searchQuery') || searchInput.value;
+        // Save the search query to local storage in case it's a new one
+        localStorage.setItem('searchQuery', searchQuery);
+
         const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&pax=${guestCount}&order=1`;
         history.pushState(null, '', newUrl);
         
@@ -378,7 +387,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function performAmenitiesSearch() {
-        const searchQuery = searchInput.value;
+        const searchQuery = localStorage.getItem('searchQuery') || searchInput.value;
+        // Save the search query to local storage in case it's a new one
+        localStorage.setItem('searchQuery', searchQuery);
+
         const selectedAmenities = getSelectedAmenities();
         console.log("Selected Amenities: ", selectedAmenities); // Debugging
 
@@ -479,7 +491,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (getSelectedAmenities().length > 0) {
             performAmenitiesSearch();
         }
-
+        
+        if (selectedStartDate && selectedEndDate) {
+            performDateSearch(selectedStartDate, selectedEndDate)
+        }
         
 
         // Update the filter count after performing searches
@@ -492,8 +507,3 @@ document.addEventListener("DOMContentLoaded", function() {
     checkinDiv.addEventListener('click', showCalendar);
     checkoutDiv.addEventListener('click', showCalendar);
 
-    
-    
-    
-  
-});

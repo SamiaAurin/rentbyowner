@@ -82,6 +82,25 @@
     margin-left: 10px;
 }
 /* Header CSS ENDS*/
+/* Breadcrumbs STRATS */
+.breadcrumb-content{
+    position: relative;
+    top: 100px;
+}
+.breadcrumb {
+    color: #030303;
+    padding: 25px 0;
+    min-height: 70px;
+}
+.breadcrumb a {
+    color: #757575;
+    text-decoration: none;
+    position: relative;
+    padding: 0 18px 0 5px;
+    display: inline-block;
+    transition: all .3s ease;
+}
+/* Breadcrumbs ENDS */
 /* Filter and Sort buttons CSS STARTS*/
 .filter-sort-btns{
     display: block;

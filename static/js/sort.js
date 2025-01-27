@@ -1,6 +1,5 @@
 // sort.js
 
-document.addEventListener("DOMContentLoaded", function() {
     const sortBtn = document.getElementById('js-sort');
     const selectOptions = document.getElementById('js-select-ul');
     const sortOptions = selectOptions.querySelectorAll('li');
@@ -23,7 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const sortValue = option.getAttribute('data-value');
             const optionText = option.querySelector('.option p').textContent;
             const searchQuery = document.getElementById('search-input').value;
-
+            
+            const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&order=${sortValue}`;
+            history.pushState(null, '', newUrl);
             // Update the default option text
             defaultOption.textContent = optionText;
             showShimmerEffect();
@@ -42,4 +43,3 @@ document.addEventListener("DOMContentLoaded", function() {
             sortBtn.classList.remove('active');
         }
     });
-});

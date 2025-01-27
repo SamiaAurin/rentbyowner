@@ -1,5 +1,3 @@
-// main.js
-
 document.addEventListener("DOMContentLoaded", function() {
     const searchBtn = document.getElementById('js-btn-search');
     const searchBox = document.getElementById('search-box');
@@ -8,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeBtn = document.getElementById('js-btn-close');
     
     
-
     // Shimmer effect when someone searches for a place
     function showShimmerEffect() {
         tilesContainer.innerHTML = '';
@@ -47,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function performSearch() {
         const searchQuery = searchInput.value;
         if (searchQuery) {
+            // Save the search query to local storage
+            localStorage.setItem('searchQuery', searchQuery);
+
             const newUrl = `/showproperties?search=${encodeURIComponent(searchQuery)}&order=1`;
             history.pushState(null, '', newUrl);
             
@@ -58,7 +58,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    
+    // Load the search query from local storage when the page loads
+    function loadSearchQuery() {
+        const savedSearchQuery = localStorage.getItem('searchQuery');
+        if (savedSearchQuery) {
+            searchInput.value = savedSearchQuery;
+        }
+    }
+
     searchBtn.addEventListener('click', function() {
         searchBox.style.display = 'flex';
     });
@@ -77,16 +84,22 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    
+    searchInput.addEventListener('input', function() {
+        localStorage.setItem('searchQuery', searchInput.value);
+    });
 
     // Fetch and display properties based on the initial URL query
     const urlParams = new URLSearchParams(window.location.search);
-    const initialSearchQuery = urlParams.get('search');
+    const initialSearchQuery = urlParams.get('search') || localStorage.getItem('searchQuery');
     
     if (initialSearchQuery) {
+        searchInput.value = initialSearchQuery; // Set the search input value to the stored query
         fetchAndDisplayProperties(initialSearchQuery, null);
     }
 
-    // Export hideModal function
+    // Load the search query when the page loads
+    loadSearchQuery();
+
+    // Export showShimmerEffect function
     window.showShimmerEffect = showShimmerEffect;
 });

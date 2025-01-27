@@ -34,13 +34,26 @@
         </div>
     </header>
     <div id="search-box" class="search-box" style="display:none;">
-        <input type="text" id="search-input" placeholder="Enter location...">
+        <input type="text" id="search-input" placeholder="Where do you want to go?" value="">
         <button id="search-submit">Search</button>
         <span class="close-btn" id="js-btn-close">
             <i class="fas fa-times"></i>
         </span>
     </div>
-    
+    <!-- Breadcrumbs Section 
+    <div class="container breadcrumb">
+        <div class="breadcrumb-content">
+            <div class="breadcrumb"> 
+                <div id="js-breadcrumb">Vacation Rentals in Dhaka |<a href="/all/bangladesh">Bangladesh</a>
+                    <a href="/all/bangladesh/dhaka-division">Dhaka Division</a><a href="/all/bangladesh/dhaka-division/dhaka/973">Dhaka</a>
+                </div>
+            </div>
+            <div class="refine-share absolute">
+                
+            </div>
+        </div>
+    </div> -->
+
     <!-- Filter and Sort Buttons Starts-->
     <div class="container filter-sort-btns">
         <div class="row">
