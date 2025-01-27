@@ -40,7 +40,7 @@
             <i class="fas fa-times"></i>
         </span>
     </div>
-    
+
     <!-- Breadcrumbs Section 
     <div class="container breadcrumb">
         <div class="breadcrumb-content">
@@ -135,7 +135,8 @@
         </div>
     </div>
     <!-- Filter and Sort Buttons Ends -->
-    
+
+    </div>
     <!-- Property Tiles Container Starts -->
     <div class="container property-tiles-container">
         <div class="row" id="js-property-tiles">

@@ -471,6 +471,8 @@
         maxPriceInput.value = maxPriceSlider.max;
         minPriceSlider.value = minPriceSlider.min;
         maxPriceSlider.value = maxPriceSlider.max;
+        priceBtn.innerHTML = `Price`;
+        priceRangeCloseBtn.style.display = 'none' ;
 
         // Hide the "more filter" button span
         filterCountSpan.style.display = 'none';
