@@ -421,6 +421,7 @@
                                     <span class="currency-text-box">
                                         <span class="currency-icon" id="js-min-currency">৳</span>
                                         <input class="modal-min-price-bottom" type="number" id="js-min-price" value="" min="24" max="1000">
+                                        
                                     </span>
                                 </div>
                                 -

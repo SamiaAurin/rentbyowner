@@ -221,47 +221,76 @@
     
     /////////////////////       Price Range   ///////////////////////////
 
-    const minPriceSlider = document.getElementById('js-min-price-slider');
-    const maxPriceSlider = document.getElementById('js-max-price-slider');
-    const minPriceInput = document.getElementById('js-min-price');
-    const maxPriceInput = document.getElementById('js-max-price');
+    const minPriceSlider = document.getElementById("js-min-price-slider");
+    const maxPriceSlider = document.getElementById("js-max-price-slider");
+    const minPriceInput = document.getElementById("js-min-price");
+    const maxPriceInput = document.getElementById("js-max-price");
     const priceRangeCloseBtn = document.getElementById('js-price-range-close');
+    function updateMinPrice() {
         
+
+        // Enable the clear filter button
+        clearFilterBtn.disabled = false;
+        clearFilterBtn.style.color = '#103076';
+
+        let minValue = parseInt(minPriceSlider.value);
+        let maxValue = parseInt(maxPriceSlider.value);
+    
+        if (minValue > maxValue) {
+            maxPriceInput.value = minValue;  // Update ONLY max input
+        } else {
+            minPriceInput.value = minValue;
+        }
+    }
+    
+    function updateMaxPrice() {
+       
+        // Enable the clear filter button
+        clearFilterBtn.disabled = false;
+        clearFilterBtn.style.color = '#103076';
+
+        let minValue = parseInt(minPriceSlider.value);
+        let maxValue = parseInt(maxPriceSlider.value);
+    
+        if (maxValue < minValue) {
+            minPriceInput.value = maxValue;  // Update ONLY min input
+        } else {
+            maxPriceInput.value = maxValue;
+        }
+    }
+    
+    function updateMinSlider() {
+        let minValue = parseInt(minPriceInput.value);
+        let maxValue = parseInt(maxPriceSlider.value);
+    
+        if (minValue > maxValue) {
+            maxPriceInput.value = minValue;  // Update ONLY max input
+        } else {
+            minPriceSlider.value = minValue;
+        }
+    }
+    
+    function updateMaxSlider() {
+        let minValue = parseInt(minPriceSlider.value);
+        let maxValue = parseInt(maxPriceInput.value);
+    
+        if (maxValue < minValue) {
+            minPriceInput.value = maxValue;  // Update ONLY min input
+        } else {
+            maxPriceSlider.value = maxValue;
+        }
+    }    
     // Initialize the input fields with the slider values
     minPriceInput.value = minPriceSlider.value;
     maxPriceInput.value = maxPriceSlider.value;
         
     // Add event listeners to update the input fields and enforce slider constraints
-    minPriceSlider.addEventListener('input', function () {
-        minPriceInput.value = minPriceSlider.value;
-
-        // Enable the clear filter button
-        clearFilterBtn.disabled = false;
-        clearFilterBtn.style.color = '#103076';
-    });
-
-    maxPriceSlider.addEventListener('input', function () {
-        maxPriceInput.value = maxPriceSlider.value;
-
-        // Enable the clear filter button
-        clearFilterBtn.disabled = false;
-        clearFilterBtn.style.color = '#103076';
-    });
+    minPriceSlider.addEventListener("input", updateMinPrice);
+    maxPriceSlider.addEventListener("input", updateMaxPrice);
 
     // Add event listeners to update the sliders and enforce constraints when the input fields change
-    minPriceInput.addEventListener('input', function () {
-        if (parseInt(minPriceInput.value) >= parseInt(maxPriceSlider.value)) {
-            minPriceInput.value = maxPriceSlider.value - 1; // Prevent overlap
-        }
-        minPriceSlider.value = minPriceInput.value;
-    });
-
-    maxPriceInput.addEventListener('input', function () {
-        if (parseInt(maxPriceInput.value) <= parseInt(minPriceSlider.value)) {
-            maxPriceInput.value = parseInt(minPriceSlider.value) + 1; // Prevent overlap
-        }
-        maxPriceSlider.value = maxPriceInput.value;
-    });
+    minPriceInput.addEventListener("input", updateMinSlider);
+    maxPriceInput.addEventListener("input", updateMaxSlider);
 
 
     // Add event listener to close button for price range

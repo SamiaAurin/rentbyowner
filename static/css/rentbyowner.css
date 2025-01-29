@@ -396,8 +396,8 @@
 .modal-single-check-box .checkmark:after {
     left: 9px;
     top: 5px;
-    width: 5px;
-    height: 10px;
+    width: 8px;
+    height: 16px;
     border: solid #00cd92;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
@@ -679,7 +679,7 @@ button:disabled {
         background-color: #fff;
         border-radius: 5px;
         box-shadow: 8px 8px 40px 5px rgba(0, 0, 0, 0.08);
-        color: #484c55;
+        color: #0a0a0a;
         font-size: 14px;
         line-height: 14px;
 }
@@ -707,10 +707,11 @@ button:disabled {
     padding: 5px 10px;
     border-radius: 4px;
 }
+
 .datepicker__month-day--today {
     box-shadow: inset 0px 0px 0px 1px rgba(16, 48, 115, 1) !important;
     background-color: #FFFFFF !important;
-    color: #1a1a1a !important; 
+    color: #030303 !important; 
     border-radius: 5px !important;
 }
 
@@ -749,8 +750,8 @@ button:disabled {
 }
 
 .datepicker__day--disabled {
-    color: #999; /* Custom text color for disabled days */
-    cursor: not-allowed; /* Custom cursor for disabled days */
+    color: #999; 
+    cursor: not-allowed; 
 }
 /* Hide the input but keep it functional */
 .input-calendar {
@@ -1009,7 +1010,7 @@ button:disabled {
 
     a{
         text-decoration: none;
-        font-size: .75rem;
+        font-size: .938rem;
         color: #fff;
         font-weight: 700;
         padding: 0 2px;
@@ -1017,6 +1018,24 @@ button:disabled {
     }
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+    .review{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        
+    }
+    .property-tiles .amenities {
+        height: 30px;
+    }
+    .property-tiles .info {
+        height: 55px;
+    }    
+    .view a{
+        font-size: .75rem;
+    }
+}
 @media  (max-width: 375px) {
     .search-box input {
         width: 200px;

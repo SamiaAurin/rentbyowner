@@ -7,13 +7,20 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/rentbyowner.css" rel="stylesheet">
+
     <!-- Font Awesome Icon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Hotel Date Picker Calendar-->
+    <link href="
+    https://cdn.jsdelivr.net/npm/hotel-datepicker@4.11.2/dist/css/hotel-datepicker.min.css
+    " rel="stylesheet">
 
     <title>RentByOwner</title>
 </head>
 <body>
     
+    <!-- Header / Navbar -->
     <header class="header-container">
         <div class="header">
             <a href="/">
@@ -27,49 +34,48 @@
         </div>
     </header>
     <div id="search-box" class="search-box" style="display:none;">
-        <input type="text" id="search-input" placeholder="Enter location...">
+        <input type="text" id="search-input" placeholder="Where do you want to go?" value="">
         <button id="search-submit">Search</button>
         <span class="close-btn" id="js-btn-close">
             <i class="fas fa-times"></i>
         </span>
     </div>
 
-    <!-- Filer and Sort Buttons Starts-->
+   
+
+    <!-- Filter and Sort Buttons Starts-->
     <div class="container filter-sort-btns">
         <div class="row">
             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
                <div class="filter-btns">
                    <div class="filters">
                      <button id="filter-date-btn">Dates</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                     <span class="filter-close-btn" id="js-date-range-close" style="display:none;">
                         <svg class="icon">
                             <use xlink:href="#close"></use>
                         </svg>
-                    </span>
+                     </span>
                    </div>
                    <div class="filters">
                      <button id="filter-price-btn">Price</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                     <span class="filter-close-btn" id="js-price-range-close" style="display:none;">
                         <svg class="icon">
                             <use xlink:href="#close"></use>
                         </svg>
-                    </span>
+                     </span>
                    </div>
                    <div class="filters">
                      <button id="filter-guests-btn">Guests</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
+                     <span class="filter-close-btn" id="js-guest-count-close" style="display:none;">
                         <svg class="icon">
                             <use xlink:href="#close"></use>
                         </svg>
-                    </span>
+                     </span>
                    </div>
                    <div class="filters">
                      <button id="filter-more-btn">More Filters</button>
-                     <span class="filter-close-btn" id="js-date-range-display-closer">
-                        <svg class="icon">
-                            <use xlink:href="#close"></use>
-                        </svg>
-                    </span>
+                     <span class="more-filterbtn-count" id="js-more-filterbtn-count" style="display:none;">
+                     </span>
                    </div>
                </div>
             </div>
@@ -116,229 +122,10 @@
             </div>
         </div>
     </div>
-    <!-- Filer and Sort Buttons Ends -->
+    <!-- Filter and Sort Buttons Ends -->
 
-    <!-- Property Tiles Container Starts -->
-    <div class="container property-tiles-container">
-        <div class="row" id="js-property-tiles">
-            <!-- Shimmer Effects -->
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="property-tiles shimmer-wrapper">
-                    <div class="tiles-img">
-                        <div class="shimmer"></div>
-                    </div>
-                    <div class="tiles-details">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="shimmer"></div>
-                        <div class="tiles-btn">
-                            <div class="col-xs-5 col-sm-5 col-md-6">
-                                <a href="">
-                                    <img src="" alt="">
-                                </a>
-                            </div>
-                            <div class="col-sm-7 col-md-6">
-                                <div class="view-line">
-                                    <a href=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="property-tiles shimmer-wrapper">
-                    <div class="tiles-img">
-                        <div class="shimmer"></div>
-                    </div>
-                    <div class="tiles-details">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="shimmer"></div>
-                        <div class="tiles-btn">
-                            <div class="col-xs-5 col-sm-5 col-md-6">
-                                <a href="">
-                                    <img src="" alt="">
-                                </a>
-                            </div>
-                            <div class="col-sm-7 col-md-6">
-                                <div class="view-line">
-                                    <a href=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="property-tiles shimmer-wrapper">
-                    <div class="tiles-img">
-                        <div class="shimmer"></div>
-                    </div>
-                    <div class="tiles-details">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="shimmer"></div>
-                        <div class="tiles-btn">
-                            <div class="col-xs-5 col-sm-5 col-md-6">
-                                <a href="">
-                                    <img src="" alt="">
-                                </a>
-                            </div>
-                            <div class="col-sm-7 col-md-6">
-                                <div class="view-line">
-                                    <a href=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="property-tiles shimmer-wrapper">
-                    <div class="tiles-img">
-                        <div class="shimmer"></div>
-                    </div>
-                    <div class="tiles-details">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="shimmer"></div>
-                        <div class="tiles-btn">
-                            <div class="col-xs-5 col-sm-5 col-md-6">
-                                <a href="">
-                                    <img src="" alt="">
-                                </a>
-                            </div>
-                            <div class="col-sm-7 col-md-6">
-                                <div class="view-line">
-                                    <a href=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="property-tiles shimmer-wrapper">
-                    <div class="tiles-img">
-                        <div class="shimmer"></div>
-                    </div>
-                    <div class="tiles-details">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="shimmer"></div>
-                        <div class="tiles-btn">
-                            <div class="col-xs-5 col-sm-5 col-md-6">
-                                <a href="">
-                                    <img src="" alt="">
-                                </a>
-                            </div>
-                            <div class="col-sm-7 col-md-6">
-                                <div class="view-line">
-                                    <a href=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="property-tiles shimmer-wrapper">
-                    <div class="tiles-img">
-                        <div class="shimmer"></div>
-                    </div>
-                    <div class="tiles-details">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="shimmer"></div>
-                        <div class="tiles-btn">
-                            <div class="col-xs-5 col-sm-5 col-md-6">
-                                <a href="">
-                                    <img src="" alt="">
-                                </a>
-                            </div>
-                            <div class="col-sm-7 col-md-6">
-                                <div class="view-line">
-                                    <a href=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     
-
-
-
-    <!--
-    <div class="calendar modal" id="js-date-picker" data-layout="overlay">
-        <div class="js-modal-content modal-content">
-            <div class="modal-header relative">
-                <div class="calendar-title font-bold">When do you want to travel?</div>
-                <div class="calendar-close cursor-pointer" id="js-date-picker-close">
-                    <svg class="icon">
-                        <use xlink:href="#cross"></use>
-                    </svg>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="top">
-                    <input type="hidden" id="js-date-range" value="2025-01-14 - 2025-01-15">
-                    <div id="js-calendar-container"><div id="datepicker-js-date-range" style="" class="datepicker  datepicker--open"><div class="datepicker__inner"><div class="datepicker__months"><table id="month-1-js-date-range" class="datepicker__month datepicker__month--month1"><thead><tr class="datepicker__month-caption"><th><span class="datepicker__month-button datepicker__month-button--prev  datepicker__month-button--disabled" month="1">&lt;</span></th><th colspan="5" class="datepicker__month-name">January 2025</th><th><span class="datepicker__month-button datepicker__month-button--next datepicker__month-button--disabled" month="1">&gt;</span></th></tr><tr class="datepicker__week-days"><th class="datepicker__week-name">Sun</th><th class="datepicker__week-name">Mon</th><th class="datepicker__week-name">Tue</th><th class="datepicker__week-name">Wed</th><th class="datepicker__week-name">Thu</th><th class="datepicker__week-name">Fri</th><th class="datepicker__week-name">Sat</th></tr></thead><tbody><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--invalid        " time="1735408800000">29</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--invalid        " time="1735495200000">30</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--invalid        " time="1735581600000">31</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735668000000">1</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735754400000">2</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735840800000">3</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1735927200000">4</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736013600000">5</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736100000000">6</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736186400000">7</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736272800000">8</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736359200000">9</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736445600000">10</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736532000000">11</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--invalid        " time="1736618400000">12</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid datepicker__month-day--today    datepicker__month-day--checkin-only   " time="1736704800000">13</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid         datepicker__month-day--first-day-selected" time="1736791200000">14</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid         datepicker__month-day--selected datepicker__month-day--last-day-selected" time="1736877600000">15</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1736964000000">16</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737050400000">17</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737136800000">18</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737223200000">19</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737309600000">20</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737396000000">21</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737482400000">22</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737568800000">23</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737655200000">24</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737741600000">25</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737828000000">26</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1737914400000">27</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738000800000">28</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738087200000">29</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738173600000">30</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738260000000">31</td><td class="datepicker__month-day datepicker__month-day--nextMonth datepicker__month-day--valid        " time="1738346400000">1</td></tr></tbody></table><table id="month-2-js-date-range" class="datepicker__month datepicker__month--month2"><thead><tr class="datepicker__month-caption"><th><span class="datepicker__month-button datepicker__month-button--prev datepicker__month-button--disabled" month="2">&lt;</span></th><th colspan="5" class="datepicker__month-name">February 2025</th><th><span class="datepicker__month-button datepicker__month-button--next" month="2">&gt;</span></th></tr><tr class="datepicker__week-days"><th class="datepicker__week-name">Sun</th><th class="datepicker__week-name">Mon</th><th class="datepicker__week-name">Tue</th><th class="datepicker__week-name">Wed</th><th class="datepicker__week-name">Thu</th><th class="datepicker__week-name">Fri</th><th class="datepicker__week-name">Sat</th></tr></thead><tbody><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1737828000000">26</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1737914400000">27</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738000800000">28</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738087200000">29</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738173600000">30</td><td class="datepicker__month-day datepicker__month-day--lastMonth datepicker__month-day--valid        " time="1738260000000">31</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738346400000">1</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738432800000">2</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738519200000">3</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738605600000">4</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738692000000">5</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738778400000">6</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738864800000">7</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1738951200000">8</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739037600000">9</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739124000000">10</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739210400000">11</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739296800000">12</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739383200000">13</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739469600000">14</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739556000000">15</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739642400000">16</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739728800000">17</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739815200000">18</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739901600000">19</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1739988000000">20</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740074400000">21</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740160800000">22</td></tr><tr class="datepicker__week-row"><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740247200000">23</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740333600000">24</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740420000000">25</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740506400000">26</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740592800000">27</td><td class="datepicker__month-day datepicker__month-day--visibleMonth datepicker__month-day--valid        " time="1740679200000">28</td><td class="datepicker__month-day datepicker__month-day--nextMonth datepicker__month-day--valid        " time="1740765600000">1</td></tr></tbody></table></div><div style="display:none" id="tooltip-js-date-range" class="datepicker__tooltip"></div></div></div></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-7 col-md-7">
-                        <div class="calendar-footer-left-section hidden js-partner-footer">
-                            <div class="calendar-footer-title font-14">We search <span class="color-accent">multiple sites</span> to find you <span class="alt-nobr"> the <span class="color-accent">best prices.</span></span></div>
-                            <div class="calendar-footer-partner-logo">
-                                <ul class="d-flex align-item-center justify-content-center">
-                                    <li>
-                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/booking.svg" alt="booking">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/kayak.svg" alt="kayak">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/expedia_v2.svg" alt="expedia">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.rentbyowner.com/release/28.0.6/static/images/vrbo.svg" alt="vrbo">
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-5 col-md-5">
-                        <div class="calender-buttons calender-buttons-controller">
-                            <button class="btn-skip"><span id="js-date-cancel" class="hidden">Skip</span></button>
-                            <button class="btn-continue" id="js-date-select">
-                                <span id="js-date-select-text">Continue</span>
-                                <span id="js-date-select-nights">1 Night</span>
-                            </button>
-                        </div>
-                        <div class="compare-price hidden js-partner-footer">
-                            <label class="compare-price-check-box relative font-13 d-block">
-                                <span class="inline-block ellipsis w-full" title="Compare Price with Other Partners">Compare Price with Other Partners</span>
-                                <input class="absolute cursor-pointer" type="checkbox" checked="">
-                                <span class="checkbox absolute inline-block"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
-    -->
     
     <!-- Filter Modal Starts -->
     <div class="filter-modal-popup" id="js-filter-modal" style="display: none;">
@@ -375,8 +162,8 @@
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <label class="modal-single-check-box">
-                                        <input class="js-pet-friendly" type="checkbox" id="amenity-11" onclick="filterScript.filterCheckListener(this);">
-                                        <span class="checkmark">&nbsp;</span>
+                                        <input class="js-pet-friendly" type="checkbox" id="amenity-20" value="Pet Friendly">
+                                        <span class="checkmark"></span>
                                     </label>
                                 </div>
                             </div>
@@ -398,54 +185,18 @@
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <label class="modal-single-check-box">
-                                        <input type="checkbox" id="js-eco-friendly">
-                                        <span class="checkmark">&nbsp;</span>
+                                        <input type="checkbox" id="amenity-21" value="Eco-friendly">
+                                        <span class="checkmark"></span>
                                     </label>
                                 </div>
                             </div>
                         </div>
     
                         <!-- check in out div starts -->
-                        <div class="select-check-in-out">
-                            <div class="modal-check-box-label-title" style="font-weight: 600;">
-                                Select a date
-                            </div>
-                            <div class="modal-check-box-label-sub-title">
-                                When do you want to travel?
-                            </div>
-                            <div class="check-in-out-all" id="js-filter-dates">
-                                <div class="single-check-in-out">
-                                    <span> Check-in</span>
-                                    <input type="text" placeholder="" id="js-checkin" readonly="" value="">
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </div>
-                                <div class="single-check-in-out">
-                                    <span> Check-out</span>
-                                    <input type="text" placeholder="" id="js-checkout" readonly="" value="">
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </div>
-                            </div>
-                        </div>
+                        
                         
                         <!-- Guest div starts -->
-                        <div class="guest-filter">
-                            <div class="guest-filter-container">
-                                <div class="modal-check-box-label-title" style="font-weight: 600;">
-                                    Guests
-                                </div>
-                                <div class="guest-count">
-                                    <div class="guest-filter-btns">
-                                        <button type="button" class="guest-button decrease">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <span class="guest">0</span>
-                                        <button type="button" class="guest-button increase">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- Guest div ends -->
                         
                         <!-- Price Range div starts -->
@@ -456,170 +207,134 @@
                             <div class="modal-check-box-label-sub-title">
                                 Select an average nightly price
                             </div>
-                            <div class="modal-slider js-price-slider">
-                                <input class="slider-range" value="0" min="245" max="122527" step="1" id="js-min-price-slider" type="range">
-                                <input class="slider-range" value="122527" min="245" max="122527" step="1" id="js-max-price-slider" type="range">
+                            <div class="modal-price-slider" id="js-price-slider">
+                                <input class="slider-range" value="0" min="24" max="1000" step="1" id="js-min-price-slider" type="range">
+                                <input class="slider-range" value="1000" min="24" max="1000" step="1" id="js-max-price-slider" type="range">
                             </div>
                             <div class="modal-min-max-price js-price-input">
                                 <div class="modal-min-price">
                                     <label class="modal-min-price-top">Min price</label>
                                     <span class="currency-text-box">
-                                                    <span class="currency-icon" id="js-min-currency">৳</span>
-                                                    <input class="modal-min-price-bottom" type="number" id="js-min-price" value="" 
-                                                       min="245" max="122527">
+                                        <span class="currency-icon" id="js-min-currency">৳</span>
+                                        <input class="modal-min-price-bottom" type="number" id="js-min-price" value="" min="24" max="1000">
+                                        
                                     </span>
                                 </div>
                                 -
-
                                 <div class="modal-max-price">
                                     <label class="modal-min-price-top" id="js-max-price-label">Max price(+)</label>
                                     <span class="currency-text-box">
-                                                    <span class="currency-icon" id="js-max-currency">৳</span>
-                                                    <input class="modal-min-price-bottom" type="number" id="js-max-price" value="" 
-                                                       min="245">
+                                        <span class="currency-icon" id="js-max-currency">৳</span>
+                                        <input class="modal-min-price-bottom" type="number" id="js-max-price" value="" min="24">
                                     </span>
                                 </div>
                             </div>
                         </div>
                         <!-- Price Range div ends -->
 
-                        <!-- Amenities  div starts -->
-                        <div class="modal-amenities">
-                            <div class="modal-check-box-label-title" style="font-weight: 600;">
-                                Amenities
-                            </div>
-                            <div class="modal-check-box-label-sub-title">
-                                Choose the amenities that are most important
-                            </div>
-    
-                            <div class="modal-amenities-checkbox" id="js-dynamic-amenities-filter">
-                                <label class="modal-single-check-box">                
-                                    <span title="Air Conditioner">Air Conditioner</span>                
-                                    <input type="checkbox" id="amenity-1">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="Balcony/terrace">Balcony/terrace</span>                
-                                    <input type="checkbox" id="amenity-2">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="Bedding/linens">Bedding/linens</span>                
-                                    <input type="checkbox" id="amenity-3">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Breakfast">Breakfast</span>                
-                                    <input type="checkbox" id="amenity-4">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="Child Friendly">Child Friendly</span>                
-                                    <input  type="checkbox" id="amenity-5">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Hot Tub">Hot Tub</span>                
-                                    <input  type="checkbox" id="amenity-6">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Internet/Wifi">Internet/Wifi</span>                
-                                    <input  type="checkbox" id="amenity-7">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Kitchen">Kitchen</span>               
-                                    <input type="checkbox" id="amenity-8">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Laundry">Laundry</span>                
-                                    <input type="checkbox" id="amenity-9">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="Parking">Parking</span>                
-                                    <input type="checkbox" id="amenity-10">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Pool">Pool</span>                
-                                    <input  type="checkbox" id="amenity-12">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Smoking">Smoking</span>                
-                                    <input type="checkbox" id="amenity-13">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="TV">TV</span>                
-                                    <input type="checkbox" id="amenity-14">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="View">View</span>                
-                                    <input type="checkbox" id="amenity-15">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Wheelchair Accessible">Wheelchair Accessible</span>                
-                                    <input type="checkbox" id="amenity-16">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Private Beach">Private Beach</span>                
-                                    <input type="checkbox" id="amenity-18">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span  title="Ocean view">Ocean view</span>                
-                                    <input  type="checkbox" id="amenity-19">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="Oceanfront">Oceanfront</span>                
-                                    <input type="checkbox" id="amenity-20">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                                <label class="modal-single-check-box">                
-                                    <span title="Lake view">Lake view</span>                
-                                    <input type="checkbox" id="amenity-21">                
-                                    <span class="checkmark"></span>            
-                                </label>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
-            <!-- Modal Footer with clear and search buttons -->
-            <div class="filter-modal-footer">
-                <div class="filter-pop-up-container">
-                    <div class="modal-buttons">
-                        <button class="modal-clear-btn" id="js-clear-filter" disabled="">Clear</button>
-                        <div class="search-btn-area">
-                            <button class="modal-submit-btn" id="js-apply-filter">
-                                <span id="js-filter-select-text" class="title">Search</span>
-                            </button>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- Filter Modal Ends -->
-
     
-    <svg style="display: none;">
-        <symbol id="close" viewBox="0 0 10 10">
-            <line x1="1" y1="1" x2="9" y2="9" stroke="white" stroke-width="1"/>
-            <line x1="9" y1="1" x2="1" y2="9" stroke="white" stroke-width="1"/>
-        </symbol>
-    </svg>
 
-    <script src="/static/js/script.js"></script>  
-    <script src="/static/js/filter-sort.js"></script>  
+    <script>
+        const dateBtn = document.getElementById('filter-date-btn');
+        const priceBtn = document.getElementById('filter-price-btn');
+        const guestsBtn = document.getElementById('filter-guests-btn');
+        const moreFiltersBtn = document.getElementById('filter-more-btn');
+        
+        // Modal Cross Icon in header = js-filter-close, In footer clear btn = js-clear-filter , search btn = js-apply-filter
+        const closeBtns = document.getElementById('js-filter-close');
+        const clearFilterBtn = document.getElementById('js-clear-filter');
+        const modalSearchSubmit = document.getElementById('js-apply-filter');
+        
+
+        // Function to display the modal
+        const filterModal = document.getElementById('js-filter-modal');
+
+        function showModal() {
+            filterModal.style.display = 'block';
+        }
+        // Function to hide the modal
+        function hideModal() {
+            filterModal.style.display = 'none';
+        }
+        const minPriceSlider = document.getElementById("js-min-price-slider");
+const maxPriceSlider = document.getElementById("js-max-price-slider");
+const minPriceInput = document.getElementById("js-min-price");
+const maxPriceInput = document.getElementById("js-max-price");
+
+function updateMinPrice() {
+    let minValue = parseInt(minPriceSlider.value);
+    let maxValue = parseInt(maxPriceSlider.value);
+
+    if (minValue > maxValue) {
+        maxPriceInput.value = minValue;  // Update ONLY max input
+    } else {
+        minPriceInput.value = minValue;
+    }
+}
+
+function updateMaxPrice() {
+    let minValue = parseInt(minPriceSlider.value);
+    let maxValue = parseInt(maxPriceSlider.value);
+
+    if (maxValue < minValue) {
+        minPriceInput.value = maxValue;  // Update ONLY min input
+    } else {
+        maxPriceInput.value = maxValue;
+    }
+}
+
+function updateMinSlider() {
+    let minValue = parseInt(minPriceInput.value);
+    let maxValue = parseInt(maxPriceSlider.value);
+
+    if (minValue > maxValue) {
+        maxPriceInput.value = minValue;  // Update ONLY max input
+    } else {
+        minPriceSlider.value = minValue;
+    }
+}
+
+function updateMaxSlider() {
+    let minValue = parseInt(minPriceSlider.value);
+    let maxValue = parseInt(maxPriceInput.value);
+
+    if (maxValue < minValue) {
+        minPriceInput.value = maxValue;  // Update ONLY min input
+    } else {
+        maxPriceSlider.value = maxValue;
+    }
+}
+
+// Event listeners for sliders
+minPriceSlider.addEventListener("input", updateMinPrice);
+maxPriceSlider.addEventListener("input", updateMaxPrice);
+
+// Event listeners for input fields
+minPriceInput.addEventListener("input", updateMinSlider);
+maxPriceInput.addEventListener("input", updateMaxSlider);
+
+
+        // Ensure filter buttons trigger modal open
+        dateBtn.addEventListener("click", showModal);
+        priceBtn.addEventListener("click", showModal);
+        guestsBtn.addEventListener("click", showModal);
+        moreFiltersBtn.addEventListener("click", showModal);
+
+        // Ensure close button hides the modal
+        closeBtns.addEventListener("click", hideModal);
+
+    </script>
+    
+  
+    <script src="/static/js/main.js"></script>
+
 </body>
 </html>
